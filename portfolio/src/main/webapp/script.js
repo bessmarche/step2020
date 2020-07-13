@@ -14,17 +14,25 @@
 
 function showAbout() {
   var x = document.getElementById("about");
+  var y = document.getElementById("skills");
+  var z = document.getElementById("social");
   if (x.style.display === "none") {
     x.style.display = "block";
+    y.style.display = "none";
+    z.style.display = "none";
   } else {
     x.style.display = "none";
   }
 }
 
 function showSkill() {
-  var x = document.getElementById("skill");
+  var x = document.getElementById("skills");
+  var y = document.getElementById("about");
+  var z = document.getElementById("social");
   if (x.style.display === "none") {
     x.style.display = "block";
+    y.style.display = "none";
+    z.style.display = "none";
   } else {
     x.style.display = "none";
   }
@@ -32,8 +40,12 @@ function showSkill() {
 
 function showSocial() {
   var x = document.getElementById("social");
+  var y = document.getElementById("skills");
+  var z = document.getElementById("about");
   if (x.style.display === "none") {
     x.style.display = "block";
+    y.style.display = "none";
+    z.style.display = "none";
   } else {
     x.style.display = "none";
   }
