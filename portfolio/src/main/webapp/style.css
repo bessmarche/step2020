@@ -18,6 +18,10 @@
   background: #e7f0ed  
 }
 
+p{
+font-size: 1.0em;
+}
+
 #buttonline{
   flex-direction: row;
 }
