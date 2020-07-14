@@ -1,3 +1,7 @@
+body{
+  background:  #435969;
+}
+
 #content {
   display: flex;
   align-items: center;
@@ -43,7 +47,7 @@ button:hover {
 }
 
 .para {
-    display: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;

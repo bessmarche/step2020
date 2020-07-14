@@ -12,14 +12,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-function showAbout() {
+function hide() {
   var x = document.getElementById("about");
   var y = document.getElementById("skills");
   var z = document.getElementById("social");
+  y.style.display = "none";
+  z.style.display = "none";
+  x.style.display = "none";
+}
+
+function showAbout() {
+  var x = document.getElementById("about");
   if (x.style.display === "none") {
+    hide();
     x.style.display = "block";
-    y.style.display = "none";
-    z.style.display = "none";
   } else {
     x.style.display = "none";
   }
@@ -27,12 +33,9 @@ function showAbout() {
 
 function showSkill() {
   var x = document.getElementById("skills");
-  var y = document.getElementById("about");
-  var z = document.getElementById("social");
   if (x.style.display === "none") {
+    hide();  
     x.style.display = "block";
-    y.style.display = "none";
-    z.style.display = "none";
   } else {
     x.style.display = "none";
   }
@@ -40,12 +43,9 @@ function showSkill() {
 
 function showSocial() {
   var x = document.getElementById("social");
-  var y = document.getElementById("skills");
-  var z = document.getElementById("about");
   if (x.style.display === "none") {
+    hide();  
     x.style.display = "block";
-    y.style.display = "none";
-    z.style.display = "none";
   } else {
     x.style.display = "none";
   }
