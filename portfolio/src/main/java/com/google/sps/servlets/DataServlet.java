@@ -26,27 +26,26 @@ import java.util.*;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
-  // variable containg some greetings
-
-  private List<String> message;
-  
+  // create and initiate a variable containg comments
+  private List<String> comments;
   @Override
   public void init(){
-      message = new ArrayList<>();
-      message.add("hello");
-      message.add("ciao");
-      message.add("bonjour");
+      comments = new ArrayList<>();
+      comments.add("hello");
+      comments.add("ciao");
+      comments.add("bonjour");
   }  
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     // Convert the list to JSON
-    String json = toJsonG(message);
+    String json = toJsonG(comments);
     // Send the JSON as the response
     response.setContentType("application/json;");
     response.getWriter().println(json);
   }
-
+  
+  // format a list to JSON usiing Gson
   private String toJsonG(List array) {
     Gson gson = new Gson();
     String json = gson.toJson(array);
