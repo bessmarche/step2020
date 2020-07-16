@@ -46,7 +46,7 @@ function showSocial() {
   }
 }
 
-// function that request the greeting from the server and adds it as a paragraph to the main page
+// function that request the greeting from the servlet and adds it as a paragraph to the main page
 
 function getGreeting() {
   var x = document.getElementById("greetings");
