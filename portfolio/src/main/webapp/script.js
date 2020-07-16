@@ -12,13 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// Functions to show paragraph content when the relevant button is clicked 
+
 function hide() {
-  var x = document.getElementById("about");
-  var y = document.getElementById("skills");
-  var z = document.getElementById("social");
-  y.style.display = "none";
-  z.style.display = "none";
-  x.style.display = "none";
+  var x = [ document.getElementById("about"),
+            document.getElementById("skills"),
+            document.getElementById("social"),
+            document.getElementById("greetings")];
+  x.forEach(i => i.style.display = "none");
 }
 
 function showAbout() {
@@ -26,9 +27,7 @@ function showAbout() {
   if (x.style.display === "none") {
     hide();
     x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
+  } 
 }
 
 function showSkill() {
@@ -36,9 +35,7 @@ function showSkill() {
   if (x.style.display === "none") {
     hide();  
     x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
+  } 
 }
 
 function showSocial() {
@@ -46,8 +43,23 @@ function showSocial() {
   if (x.style.display === "none") {
     hide();  
     x.style.display = "block";
-  } else {
-    x.style.display = "none";
   }
 }
+
+// function that request the greeting from the server and adds it as a paragraph to the main page
+
+function getGreeting() {
+  var x = document.getElementById("greetings");
+  if (x.style.display === "none") {
+    hide();
+    fetch('/data').then(response => response.text()).then((greeting) => {
+    x.innerText = greeting;
+    });
+    x.style.display = "block";
+  } 
+}
+
+
+
+
 
