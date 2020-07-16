@@ -1,7 +1,13 @@
 # Google Student Training in Engineering Program
 
-This repo contains the projects you'll work on for the first half of STEP.
+Welcome! It's B, a Google STEP Intern 2020. 
+This repo contains the projects I'll work on for the first half of my internship.
 This work is based on the [Google Software Product Sprint](https://g.co/softwareproductsprint) program.
+
+Enjoy :)
+
+
+# Getting Started 
 
 To get started:
 
