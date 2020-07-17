@@ -14,19 +14,48 @@
 
 package com.google.sps.servlets;
 
+import com.google.gson.Gson;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.*;
 
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
+  private List<String> comments;
+
+  @Override
+  public void init(){
+    comments = new ArrayList<>();
+  } 
+
+  /** 
+    * doPost process each comment sent by the client 
+   **/
+  @Override
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    comments.add(request.getParameter( "user-comment"));
+    response.sendRedirect("/");
+  }
+
+  /** 
+    * doGet sends the list of comments form the client 
+   **/
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    response.setContentType("text/html;");
-    response.getWriter().println("Hello Beatrice!");
+    String json = toJsonG(comments);
+    response.setContentType("application/json;");
+    response.getWriter().println(json);
+  }
+  
+  // toJsonG formats a list to JSON using Gson
+  private String toJsonG(List array) {
+    Gson gson = new Gson();
+    String json = gson.toJson(array);
+    return json;
   }
 }
