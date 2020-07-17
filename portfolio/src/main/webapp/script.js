@@ -18,7 +18,7 @@ function hide() {
   var x = [ document.getElementById("about"),
             document.getElementById("skills"),
             document.getElementById("social"),
-            document.getElementById("greetings")];
+            document.getElementById("form")];
   x.forEach(i => i.style.display = "none");
 }
 
@@ -48,18 +48,15 @@ function showSocial() {
 
 // function that request the greeting from the servlet and adds it as a paragraph to the main page
 
-function getGreeting() {
-  var x = document.getElementById("greetings");
+function getComments() {
+  var x = document.getElementById("form");
+  var y = document.getElementById("comments");
   if (x.style.display === "none") {
     hide();
-    fetch('/data').then(response => response.text()).then((greeting) => {
-    x.innerText = greeting;
+    fetch('/data').then(response => response.text()).then((commentsList)=>{
+        y.innerHTML = commentsList; 
     });
     x.style.display = "block";
   } 
 }
-
-
-
-
 

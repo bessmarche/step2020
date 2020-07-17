@@ -26,15 +26,24 @@ import java.util.*;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
-  // create and initiate a variable containg comments
+  // create and initiate a list containg all comments
   private List<String> comments;
   @Override
   public void init(){
-      comments = new ArrayList<>();
-      comments.add("hello");
-      comments.add("ciao");
-      comments.add("bonjour");
+    comments = new ArrayList<>();
   }  
+
+  @Override
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    // get input from the form
+    String text = request.getParameter( "user-comment");
+
+    // add the comment to the comment list
+    comments.add(text);
+
+    // redirect user to the homepage
+    response.sendRedirect("/");
+  }
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
