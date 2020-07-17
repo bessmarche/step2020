@@ -26,35 +26,33 @@ import java.util.*;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
-  // create and initiate a list containg all comments
   private List<String> comments;
+
   @Override
   public void init(){
     comments = new ArrayList<>();
-  }  
+  } 
 
+  /** 
+    * doPost process each comment sent by the client 
+   **/
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    // get input from the form
-    String text = request.getParameter( "user-comment");
-
-    // add the comment to the comment list
-    comments.add(text);
-
-    // redirect user to the homepage
+    comments.add(request.getParameter( "user-comment"));
     response.sendRedirect("/");
   }
 
+  /** 
+    * doGet sends the list of comments form the client 
+   **/
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    // Convert the list to JSON
     String json = toJsonG(comments);
-    // Send the JSON as the response
     response.setContentType("application/json;");
     response.getWriter().println(json);
   }
   
-  // format a list to JSON usiing Gson
+  // toJsonG formats a list to JSON using Gson
   private String toJsonG(List array) {
     Gson gson = new Gson();
     String json = gson.toJson(array);
