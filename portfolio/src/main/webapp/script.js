@@ -54,9 +54,15 @@ function getComments() {
   if (x.style.display === "none") {
     hide();
     fetch('/data').then(response => response.text()).then((commentsList)=>{
-        y.innerHTML = commentsList; 
+        var parsedList = JSON.parse(commentsList);
+        // add bold and line break tag to each comment
+        var html = "";
+        parsedList.forEach(x=>{
+            html+='<b>'+x+'</b>'+'<br>'
+            });
+        // add the comments to the html page    
+        y.innerHTML = html; 
     });
     x.style.display = "block";
   } 
 }
-
