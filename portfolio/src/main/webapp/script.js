@@ -46,8 +46,6 @@ function showSocial() {
   }
 }
 
-// function that request the greeting from the servlet and adds it as a paragraph to the main page
-
 function getComments() {
   var x = document.getElementById("form");
   var y = document.getElementById("comments");
