@@ -53,12 +53,14 @@ public class DataServlet extends HttpServlet {
    **/
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    int numOfComment = Integer.parseInt(request.getParameter("numberChoice"));
     Query query = new Query("Comment");
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     PreparedQuery results = datastore.prepare(query);
 
     ArrayList<String> comments = new ArrayList<>();
     for (Entity entity : results.asIterable()) {
+      if (comments.size() == numOfComment) {break;}
       String comment = (String) entity.getProperty("text");
       comments.add(comment);
     }

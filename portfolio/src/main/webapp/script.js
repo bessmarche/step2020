@@ -48,10 +48,17 @@ function showSocial() {
 
 function getComments() {
   var x = document.getElementById("form");
-  var y = document.getElementById("comments");
   if (x.style.display === "none") {
     hide();
-    fetch('/data').then(response => response.text()).then((commentsList)=>{
+    x.style.display = "block";
+  } 
+}
+
+function fetchData(){
+ var x = document.getElementById("form");
+ var y = document.getElementById("comments");   
+ var n_comments = document.getElementById("numberOfComments").value;
+ fetch('/data?numberChoice='+n_comments).then(response => response.text()).then((commentsList)=>{
         var parsedList = JSON.parse(commentsList);
         // add bold and line break tag to each comment
         var html = "";
@@ -61,6 +68,6 @@ function getComments() {
         // add the comments to the html page    
         y.innerHTML = html; 
     });
-    x.style.display = "block";
-  } 
 }
+
+fetchData();
