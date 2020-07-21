@@ -12,7 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Functions to show paragraph content when the relevant button is clicked 
 
 function hide() {
   var x = [ document.getElementById("about"),
@@ -22,6 +21,7 @@ function hide() {
   x.forEach(i => i.style.display = "none");
 }
 
+// showAbout shoieSkill showSocial getComment: functions to show paragraph content when the relevant button is clicked 
 function showAbout() {
   var x = document.getElementById("about");
   if (x.style.display === "none") {
@@ -54,6 +54,7 @@ function getComments() {
   } 
 }
 
+// fetchData sends a request every time the number of displayed comment is changed by the user
 function fetchData(){
  var x = document.getElementById("form");
  var y = document.getElementById("comments");   
@@ -70,4 +71,6 @@ function fetchData(){
     });
 }
 
-fetchData();
+function fetchDeleteData(){
+    fetch('/delete-data').then(fetchData());
+}
