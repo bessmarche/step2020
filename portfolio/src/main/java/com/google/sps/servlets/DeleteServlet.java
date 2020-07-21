@@ -30,7 +30,7 @@ import java.util.*;
 
 /** Servlet to delete the comments data from the database. */
 @WebServlet("/delete-data")
-public class DataServlet extends HttpServlet {
+public class DeleteServlet extends HttpServlet {
   /** 
     * doPost process each comment sent by the client and adds it to the database 
    **/
@@ -39,8 +39,9 @@ public class DataServlet extends HttpServlet {
     
     //iterate trough the entities in the database and delete them
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    Query query = new Query("Comment");
     for (Entity entity : datastore.prepare(query).asIterable()) {
-        datastore.delete(entity.geKey);
+        datastore.delete(entity.getKey());
     }
 
     response.sendRedirect("/");

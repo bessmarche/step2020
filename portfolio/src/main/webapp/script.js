@@ -72,5 +72,5 @@ function fetchData(){
 }
 
 function fetchDeleteData(){
-    fetch('/delete-data').then(fetchData());
+    fetch('/delete-data', {method: 'POST'}).then(fetchData());
 }

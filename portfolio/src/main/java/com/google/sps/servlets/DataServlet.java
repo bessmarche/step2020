@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// to see sdmin page /_ah/admin
+
 package com.google.sps.servlets;
 
 import com.google.appengine.api.datastore.DatastoreService;
