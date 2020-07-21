@@ -59,13 +59,16 @@
             <br>
             <label for="numberChoice">How many comments do you want to see?</label>
                  <select name="numberChoice" id="numberOfComments" onchange="fetchData()">
-                     <option value="0" selected="selected">None</option>
-                     <option value="5">5</option>
+                     <option value="0">None</option>
+                     <option value="5" selected="selected">5</option>
                      <option value="10">10</option>
                      <option value="20">20</option>
                      <option value="-1">Show All</option>
                  </select> 
         </div>
+        <script type="text/javascript">
+             fetchData();
+        </script>
     </div>
   </body>
 </html>
