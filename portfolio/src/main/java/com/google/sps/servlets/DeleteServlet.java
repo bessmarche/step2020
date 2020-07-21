@@ -28,51 +28,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.*;
 
-/** Servlet that returns the comments data from the database. */
-@WebServlet("/data")
+/** Servlet to delete the comments data from the database. */
+@WebServlet("/delete-data")
 public class DataServlet extends HttpServlet {
-
   /** 
     * doPost process each comment sent by the client and adds it to the database 
    **/
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    String comment = request.getParameter( "user-comment");
     
-    //store the comment in the database 
-    Entity commentEntity = new Entity("Comment");
-    commentEntity.setProperty("text", comment);
+    //iterate trough the entities in the database and delete them
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-    datastore.put(commentEntity);
-    
+    for (Entity entity : datastore.prepare(query).asIterable()) {
+        datastore.delete(entity.geKey);
+    }
+
     response.sendRedirect("/");
   }
 
-  /** 
-    * doGet gets the list of comments from the database and sends the list of comments form the client 
-   **/
-  @Override
-  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    int numOfComment = Integer.parseInt(request.getParameter("numberChoice"));
-    Query query = new Query("Comment");
-    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-    PreparedQuery results = datastore.prepare(query);
-
-    ArrayList<String> comments = new ArrayList<>();
-    for (Entity entity : results.asIterable()) {
-      if (comments.size() == numOfComment) {break;}
-      String comment = (String) entity.getProperty("text");
-      comments.add(comment);
-    }
-    String json = toJsonG(comments);
-    response.setContentType("application/json;");
-    response.getWriter().println(json);
-  }
-  
-  // toJsonG formats a list to JSON using Gson
-  private String toJsonG(List array) {
-    Gson gson = new Gson();
-    String json = gson.toJson(array);
-    return json;
-  }
 }
