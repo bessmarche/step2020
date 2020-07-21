@@ -55,6 +55,8 @@
                  <br/><br/>
                  <input type="submit" />
             </form>
+            <button onclick="fetchDeleteData()">Delete All Comments</button>
+            <br>
             <label for="numberChoice">How many comments do you want to see?</label>
                  <select name="numberChoice" id="numberOfComments" onchange="fetchData()">
                      <option value="0" selected="selected">None</option>
@@ -63,7 +65,6 @@
                      <option value="20">20</option>
                      <option value="-1">Show All</option>
                  </select> 
-            <button onclick="fetchDeleteData()">DELETE ALL COMMENTS</button>
         </div>
     </div>
   </body>

@@ -34,6 +34,7 @@ button {
   outline: none;
   border: 5px solid #e7f0ed;
   padding: 10px 10px;
+  margin: 10px;
   font-size: 1.5em;
   color: #435969;
   font-weight: bold;
