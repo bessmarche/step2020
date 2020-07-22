@@ -82,5 +82,5 @@ function fetchDeleteData(){
 
 // deleteComment send a POST request to delete a sigle comment when the user clicks the button
 function deleteComment(id){
-    
+    // TODO: finish bthis function
 }
