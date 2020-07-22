@@ -60,11 +60,15 @@ function fetchData(){
  var y = document.getElementById("comments");   
  var n_comments = document.getElementById("numberOfComments").value;
  fetch('/data?numberChoice='+n_comments).then(response => response.text()).then((commentsList)=>{
+        console.log(commentsList)
+        console.log(typeof commentsList)
         var parsedList = JSON.parse(commentsList);
         // add bold and line break tag to each comment
         var html = "";
         parsedList.forEach(x=>{
-            html+='<li>'+x+'<button class="delete" onclick="fetchDeleteData()">X </button></li>';
+            var id = x.propertyMap.id;
+            var text = x.propertyMap.text;
+            html+='<li id='+id+'>'+text+'<button class="delete" onclick="fetchDelete()">X </button></li>';
             });
         // add the comments to the html page    
         y.innerHTML = html; 

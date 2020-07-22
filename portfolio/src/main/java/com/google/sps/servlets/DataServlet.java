@@ -62,11 +62,15 @@ public class DataServlet extends HttpServlet {
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     PreparedQuery results = datastore.prepare(query);
 
-    ArrayList<String> comments = new ArrayList<>();
+    ArrayList<Entity> comments = new ArrayList<>();
     for (Entity entity : results.asIterable()) {
       if (comments.size() == numOfComment) {break;}
-      String comment = (String) entity.getProperty("text");
-      comments.add(comment);
+      long id = entity.getKey().getId();
+      String text = (String) entity.getProperty("text");
+      Entity commentEntity= new Entity("Comment");
+      commentEntity.setProperty("id", id);
+      commentEntity.setProperty("text", text);
+      comments.add(commentEntity);
     }
     String json = toJsonG(comments);
     response.setContentType("application/json;");
