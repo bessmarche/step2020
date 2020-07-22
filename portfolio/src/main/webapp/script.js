@@ -39,19 +39,25 @@ function showSkill() {
 }
 
 function showSocial() {
-  var x = document.getElementById("social");
-  if (x.style.display === "none") {
+  var formElement = document.getElementById("social");
+  if (formElement.style.display === "none") {
     hide();  
-    x.style.display = "block";
+    formElement.style.display = "block";
   }
 }
 
 function getComments() {
   var x = document.getElementById("form");
-  var y = document.getElementById("comments");
   if (x.style.display === "none") {
     hide();
-    fetch('/data').then(response => response.text()).then((commentsList)=>{
+    x.style.display = "block";
+  } 
+}
+
+function fetchData(){
+ var commElement = document.getElementById("comments");   
+ var n_comments = document.getElementById("numberOfComments").value;
+ fetch('/data?numberChoice='+n_comments).then(response => response.text()).then((commentsList)=>{
         var parsedList = JSON.parse(commentsList);
         // add bold and line break tag to each comment
         var html = "";
@@ -59,8 +65,6 @@ function getComments() {
             html+='<b>'+x+'</b>'+'<br>'
             });
         // add the comments to the html page    
-        y.innerHTML = html; 
+        commElement.innerHTML = html; 
     });
-    x.style.display = "block";
-  } 
 }

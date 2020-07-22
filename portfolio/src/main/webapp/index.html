@@ -47,7 +47,7 @@
             <a href="https://www.instagram.com/beatricemarchegiani" target="_blank">Instagram</a> <br>
             <a href="https://www.linkedin.com/in/beatrice-marchegiani-a24206117" target="_blank">Linkedin</a> <br>
         </div>
-        <div id="form" class="para" style="display:none;">
+        <div id="form" class="para">
             <div id="comments"> </div>
             <form action="/data" method="POST">
                  <h1>Leave a comment here:</h1>
@@ -55,6 +55,14 @@
                  <br/><br/>
                  <input type="submit" />
             </form>
+            <label for="numberChoice">How many comments do you want to see?</label>
+                 <select name="numberChoice" id="numberOfComments" onchange="fetchData()">
+                     <option value="0" selected="selected">None</option>
+                     <option value="5">5</option>
+                     <option value="10">10</option>
+                     <option value="20">20</option>
+                     <option value="-1">Show All</option>
+                 </select> 
         </div>
     </div>
   </body>
