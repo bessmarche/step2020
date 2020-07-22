@@ -71,5 +71,5 @@ function fetchData(){
 
 // fetchDeleteData sends a POST request every time the delete button is clicked by the user
 function fetchDeleteData(){
-    fetch('/delete-data', {method: 'POST'}).then(fetchData());
+    fetch('/delete-data', {method: 'POST'}).then(() => fetchData());
 }
