@@ -68,7 +68,7 @@ function fetchData(){
         parsedList.forEach(x=>{
             var id = x.propertyMap.id;
             var text = x.propertyMap.text;
-            html+='<li id='+id+'>'+text+'<button class="delete" onclick="fetchDelete()">X </button></li>';
+            html+='<li id='+id+'>'+text+'<button class="delete" onclick="deleteComment('+id+')">X </button></li>';
             });
         // add the comments to the html page    
         y.innerHTML = html; 
@@ -78,4 +78,9 @@ function fetchData(){
 // fetchDeleteData sends a POST request every time the delete button is clicked by the user
 function fetchDeleteData(){
     fetch('/delete-data', {method: 'POST'}).then(fetchData());
+}
+
+// deleteComment send a POST request to delete a sigle comment when the user clicks the button
+function deleteComment(id){
+    
 }
