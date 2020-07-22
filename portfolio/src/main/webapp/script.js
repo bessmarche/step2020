@@ -64,7 +64,7 @@ function fetchData(){
         // add bold and line break tag to each comment
         var html = "";
         parsedList.forEach(x=>{
-            html+='<b>'+x+'</b>'+'<br>'
+            html+='<li>'+x+'</li>';
             });
         // add the comments to the html page    
         y.innerHTML = html; 
