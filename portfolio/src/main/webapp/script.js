@@ -64,7 +64,7 @@ function fetchData(){
         // add bold and line break tag to each comment
         var html = "";
         parsedList.forEach(x=>{
-            html+='<li>'+x+'</li>';
+            html+='<li>'+x+'<button class="delete" onclick="fetchDeleteData()">X </button></li>';
             });
         // add the comments to the html page    
         y.innerHTML = html; 

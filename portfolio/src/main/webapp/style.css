@@ -75,6 +75,15 @@ input[type=submit]:hover {
   color: white;
 }
 
+.delete{
+  padding: 5px;
+  height:30px;
+  width:30px;
+  color: #e7f0ed;
+  font-size: 0.7em; 
+  background: #435969;
+}
+
 #delete{
   font-size: 1.3em;
 }

@@ -53,7 +53,7 @@ public class DataServlet extends HttpServlet {
   }
 
   /** 
-    * doGet gets the list of comments from the database and sends the list of comments form the client 
+    * doGet gets the list of comments and comments id from the database and sends it as a list of pair (id,comment) to the client 
    **/
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
