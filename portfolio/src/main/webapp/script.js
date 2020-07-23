@@ -39,10 +39,10 @@ function showSkill() {
 }
 
 function showSocial() {
-  var x = document.getElementById("social");
-  if (x.style.display === "none") {
+  var formElement = document.getElementById("social");
+  if (formElement.style.display === "none") {
     hide();  
-    x.style.display = "block";
+    formElement.style.display = "block";
   }
 }
 
@@ -56,8 +56,7 @@ function getComments() {
 
 // fetchData sends a request every time the number of displayed comment is changed by the user
 function fetchData(){
- var x = document.getElementById("form");
- var y = document.getElementById("comments");   
+ var commElement = document.getElementById("comments");   
  var n_comments = document.getElementById("numberOfComments").value;
  fetch('/data?numberChoice='+n_comments).then(response => response.text()).then((commentsList)=>{
         console.log(commentsList)
@@ -71,9 +70,8 @@ function fetchData(){
             html+='<li id='+id+'>'+text+'<button class="delete" onclick="deleteComment('+id+')">X </button></li>';
             });
         // add the comments to the html page    
-        y.innerHTML = html; 
+        commElement.innerHTML = html; 
     });
-}
 
 // fetchDeleteData sends a POST request every time the delete button is clicked by the user
 function fetchDeleteData(){
