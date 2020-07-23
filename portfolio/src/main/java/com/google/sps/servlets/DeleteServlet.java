@@ -14,6 +14,8 @@
 
 package com.google.sps.servlets;
 
+import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
@@ -36,14 +38,21 @@ public class DeleteServlet extends HttpServlet {
    **/
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    
-    //iterate trough the entities in the database and delete them
+    String idComment = request.getParameter("idComment");
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     Query query = new Query("Comment");
-    for (Entity entity : datastore.prepare(query).asIterable()) {
-        datastore.delete(entity.getKey());
-    }
 
+    if(idComment.isEmpty()){
+         //iterate trough the entities in the database and delete them
+        for (Entity entity : datastore.prepare(query).asIterable()) {
+            datastore.delete(entity.getKey());
+        }
+    } else {
+        //parse id to long and delete entity with corresponding id
+        long id = Long.parseLong(idComment);
+        Key commentKey = KeyFactory.createKey("Comment", id);
+        datastore.delete(commentKey);
+    }
     response.sendRedirect("/");
   }
 

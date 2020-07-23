@@ -59,8 +59,6 @@ function fetchData(){
  var commElement = document.getElementById("comments");   
  var n_comments = document.getElementById("numberOfComments").value;
  fetch('/data?numberChoice='+n_comments).then(response => response.text()).then((commentsList)=>{
-        console.log(commentsList)
-        console.log(typeof commentsList)
         var parsedList = JSON.parse(commentsList);
         // add bold and line break tag to each comment
         var html = "";
@@ -72,13 +70,15 @@ function fetchData(){
         // add the comments to the html page    
         commElement.innerHTML = html; 
     });
+}
 
 // fetchDeleteData sends a POST request every time the delete button is clicked by the user
 function fetchDeleteData(){
-    fetch('/delete-data', {method: 'POST'}).then(() => fetchData());
-}
+    fetch('/delete-data?idComment=', {method: 'POST'}).then(() => fetchData());
+  }
 
 // deleteComment send a POST request to delete a sigle comment when the user clicks the button
-// function deleteComment(id){
+function deleteComment(id){
     // TODO: finish bthis function
-//}
+    fetch('/delete-data?idComment='+id, {method: 'POST'}).then(() => fetchData());
+}
