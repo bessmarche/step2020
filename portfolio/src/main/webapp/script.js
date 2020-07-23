@@ -86,5 +86,20 @@ function deleteComment(id){
 function createMap() {
   const map = new google.maps.Map(
       document.getElementById('map'),
-      {center: {lat: 41.902782, lng: 12.496366}, zoom: 13});
+      {center: {lat: 41.888300, lng: 12.481410}, zoom: 14});
+   const romeowMarker = new google.maps.Marker({
+      position: {lat: 41.870510, lng: 12.481530},
+      map: map,
+      title: 'Romeow Cat Bistro'
+    });
+   const gelatoMarker = new google.maps.Marker({
+      position: {lat: 41.889930, lng: 12.473980},
+      map: map,
+      title: 'Best Gelato in Rome'
+    }); 
+    const cakeMarker = new google.maps.Marker({
+      position: {lat: 41.893230, lng: 12.476930},
+      map: map,
+      title: 'My favourite bakery'
+    }); 
 }
