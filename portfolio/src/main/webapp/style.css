@@ -76,10 +76,10 @@ input[type=submit]:hover {
 }
 
 .delete{
-  padding: 5px;
-  height:30px;
-  width:30px;
+  height:25px;
+  width:25px;
   color: #e7f0ed;
+  text-align: center;
   font-size: 0.7em; 
   background: #435969;
 }
