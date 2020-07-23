@@ -15,7 +15,7 @@
 
 function hide() {
   var x = [ document.getElementById("about"),
-            document.getElementById("skills"),
+            document.getElementById("mapContainer"),
             document.getElementById("social"),
             document.getElementById("form")];
   x.forEach(i => i.style.display = "none");
@@ -30,11 +30,11 @@ function showAbout() {
   } 
 }
 
-function showSkill() {
-  var skillElement = document.getElementById("skills");
-  if (skillElement.style.display === "none") {
+function showMap() {
+  var mapElement = document.getElementById("mapContainer");
+  if (mapElement.style.display === "none") {
     hide();  
-    skillElement.style.display = "block";
+    mapElement.style.display = "block";
   } 
 }
 
