@@ -82,3 +82,9 @@ function deleteComment(id){
     // TODO: finish bthis function
     fetch('/delete-data?idComment='+id, {method: 'POST'}).then(() => fetchData());
 }
+
+function createMap() {
+  const map = new google.maps.Map(
+      document.getElementById('map'),
+      {center: {lat: 41.902782, lng: 12.496366}, zoom: 13});
+}
