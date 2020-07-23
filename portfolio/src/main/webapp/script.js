@@ -65,7 +65,7 @@ function fetchData(){
         parsedList.forEach(x=>{
             var id = x.propertyMap.id;
             var text = x.propertyMap.text;
-            html+='<li id='+id+'>'+text+'<button class="delete" onclick="deleteComment('+id+')"></button></li>';
+            html+='<li id='+id+'>'+text+'<button class="delete" onclick="deleteComment('+id+')">X</button></li>';
             });
         // add the comments to the html page    
         commElement.innerHTML = html; 
