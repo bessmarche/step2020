@@ -68,6 +68,7 @@ function fetchData(){
         // add the comments to the html page    
         commElement.innerHTML = html; 
     });
+}
 
 // fetchDeleteData sends a POST request every time the delete button is clicked by the user
 function fetchDeleteData(){

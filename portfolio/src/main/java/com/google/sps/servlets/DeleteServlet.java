@@ -32,7 +32,7 @@ import java.util.*;
 @WebServlet("/delete-data")
 public class DeleteServlet extends HttpServlet {
   /** 
-    * doPost process each comment sent by the client and adds it to the database 
+    * doPost iterate trough all comment entities and deletes them from the database 
    **/
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
