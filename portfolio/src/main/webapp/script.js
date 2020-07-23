@@ -23,18 +23,18 @@ function hide() {
 
 // showAbout shoieSkill showSocial getComment: functions to show paragraph content when the relevant button is clicked 
 function showAbout() {
-  var x = document.getElementById("about");
-  if (x.style.display === "none") {
+  var aboutElement = document.getElementById("about");
+  if (aboutElement.style.display === "none") {
     hide();
-    x.style.display = "block";
+    aboutElement.style.display = "block";
   } 
 }
 
 function showSkill() {
-  var x = document.getElementById("skills");
-  if (x.style.display === "none") {
+  var skillElement = document.getElementById("skills");
+  if (skillElement.style.display === "none") {
     hide();  
-    x.style.display = "block";
+    skillElement.style.display = "block";
   } 
 }
 
@@ -47,10 +47,10 @@ function showSocial() {
 }
 
 function getComments() {
-  var x = document.getElementById("form");
-  if (x.style.display === "none") {
+  var commElement = document.getElementById("form");
+  if (commElement.style.display === "none") {
     hide();
-    x.style.display = "block";
+    commElement.style.display = "block";
   } 
 }
 
@@ -75,10 +75,10 @@ function fetchData(){
 
 // fetchDeleteData sends a POST request every time the delete button is clicked by the user
 function fetchDeleteData(){
-    fetch('/delete-data', {method: 'POST'}).then(fetchData());
+    fetch('/delete-data', {method: 'POST'}).then(() => fetchData());
 }
 
 // deleteComment send a POST request to delete a sigle comment when the user clicks the button
-function deleteComment(id){
+// function deleteComment(id){
     // TODO: finish bthis function
-}
+//}
