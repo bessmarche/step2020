@@ -77,7 +77,19 @@
                      <option value="-1">Show All</option>
                  </select> 
         </div>
-        <div id="chart" class="para" style="display:none;">Chart Coming Soon</div>
+        <div id="chart" class="para" style="display:none;">
+            <div id="chartContainer"></div>  
+            <h2>Vote</h2>
+            <form action="/chart-data" method="POST">
+                <select name="vote">
+                      <option value="Mozzarella">Mozzarella</option>
+                      <option value="Chilly">Chilly</option>
+                      <option value="Mushroom">Mushroom</option>
+                </select>
+           <br>
+           <button>Submit Your Choice</button>
+           </form>
+        </div>
     </div>
     <script type="text/javascript">
              fetchData();

@@ -130,8 +130,9 @@ function createMap() {
     });
 }
 
-/** Creates a chart and adds it to the page. */
+// drawChart creates a chart and adds it to the page. 
 function drawChart() {
+// TODO modify this to accept the user input (see example program) - check the servlet is fine
   const data = new google.visualization.DataTable();
   data.addColumn('string', 'Topping');
   data.addColumn('number', 'Count');
@@ -148,6 +149,6 @@ function drawChart() {
   };
 
   const chart = new google.visualization.PieChart(
-      document.getElementById('chart'));
+      document.getElementById('chartContainer'));
   chart.draw(data, options);
 }
