@@ -26,7 +26,7 @@ function showAbout() {
   var aboutElement = document.getElementById("about");
   if (aboutElement.style.display === "none") {
     hide();
-    aboutElement.style.display = "block";
+    aboutElement.style.display = "flex";
   } 
 }
 
@@ -34,7 +34,7 @@ function showMap() {
   var mapElement = document.getElementById("mapContainer");
   if (mapElement.style.display === "none") {
     hide();  
-    mapElement.style.display = "block";
+    mapElement.style.display = "flex";
   } 
 }
 
@@ -42,7 +42,7 @@ function showSocial() {
   var formElement = document.getElementById("social");
   if (formElement.style.display === "none") {
     hide();  
-    formElement.style.display = "block";
+    formElement.style.display = "flex";
   }
 }
 
@@ -50,7 +50,7 @@ function getComments() {
   var commElement = document.getElementById("form");
   if (commElement.style.display === "none") {
     hide();
-    commElement.style.display = "block";
+    commElement.style.display = "flex";
   } 
 }
 
@@ -104,9 +104,9 @@ function createMap() {
 
   var bakeryInfo ='<div>'+
       '<h1>Pasticceria Boccione</h1>'+
-      'This family owned bakery is loceted at the hearth of the Jewish Getto in one of the most historical neighborood of the city. <br>'+
+      'This family owned bakery is located at the hearth of the Jewish Ghetto in one of the most historical neighborood of the city. <br>'+
       'Their produces offer a unique combination of the Jewish and Roman tradition! <br>'+
-      'My favourite cake if their richotta and cherry pie (100% reccomend)<br>'+
+      'My favourite cake is their ricotta and cherry pie (100% reccomend)<br>'+
       '<a href="https://www.tripadvisor.com/Attraction_Review-g187791-d2358692-Reviews-Pasticceria_Boccione-Rome_Lazio.html">'+
       'Check them on TripAdvisor</a>'+
       '</div>';
