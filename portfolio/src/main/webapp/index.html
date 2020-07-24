@@ -3,9 +3,10 @@
   <head>
     <meta charset="UTF-8">
     <title>Beatrice</title>
-      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFHL1VTHTuhrDcATKcgLjCnj82I0qzYVo"></script>
-    <link rel="stylesheet" href="style.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFHL1VTHTuhrDcATKcgLjCnj82I0qzYVo"></script>
     <script src="script.js"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body onload="createMap();">
     <div id="content">
@@ -16,10 +17,11 @@
         Currently, I am a 2nd year undergrad reading <b>Computer Science and Philosophy at Oxford University</b> (so if you have any deep philosophical questions fire away! ).<br> 
         In my spare time I enjoy <b>horse riding, hiking, playing board games and baking</b> (chocolate cake anyone?). This is my first work experience and I'm so excited to be working for Google!</p>
       <div id="buttonline">
-        <button onclick="showAbout()">ABOUT ME</button>
-        <button onclick="showMap()">WHEN IN ROME</button>
-        <button onclick="showSocial()">LET'S BE FRIENDS</button>
-        <button onclick="getComments()">COMMENTS</button>
+        <button onclick="show('about')">ABOUT ME</button>
+        <button onclick="show('mapContainer')">WHEN IN ROME</button>
+        <button onclick="show('social')">LET'S BE FRIENDS</button>
+        <button onclick="show('form')">COMMENTS</button>
+        <button onclick="show('chart')">CHART</button>
       </div>
      </div>  
         <div id="about" class="para" style="display:none;"> 
@@ -75,6 +77,7 @@
                      <option value="-1">Show All</option>
                  </select> 
         </div>
+        <div id="chart" class="para" style="display:none;">Chart Coming Soon</div>
     </div>
     <script type="text/javascript">
              fetchData();

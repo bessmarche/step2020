@@ -17,40 +17,17 @@ function hide() {
   var x = [ document.getElementById("about"),
             document.getElementById("mapContainer"),
             document.getElementById("social"),
-            document.getElementById("form")];
+            document.getElementById("form"),
+            document.getElementById("chart")];
   x.forEach(i => i.style.display = "none");
 }
 
-// showAbout shoieSkill showSocial getComment: functions to show paragraph content when the relevant button is clicked 
-function showAbout() {
-  var aboutElement = document.getElementById("about");
-  if (aboutElement.style.display === "none") {
+// show(x) function to show paragraph content when the relevant button is clicked 
+function show(x) {
+  var element = document.getElementById(x);
+  if (element.style.display === "none") {
     hide();
-    aboutElement.style.display = "flex";
-  } 
-}
-
-function showMap() {
-  var mapElement = document.getElementById("mapContainer");
-  if (mapElement.style.display === "none") {
-    hide();  
-    mapElement.style.display = "flex";
-  } 
-}
-
-function showSocial() {
-  var formElement = document.getElementById("social");
-  if (formElement.style.display === "none") {
-    hide();  
-    formElement.style.display = "flex";
-  }
-}
-
-function getComments() {
-  var commElement = document.getElementById("form");
-  if (commElement.style.display === "none") {
-    hide();
-    commElement.style.display = "flex";
+    element.style.display = "flex";
   } 
 }
 
