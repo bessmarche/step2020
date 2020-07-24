@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
 
 function hide() {
   var x = [ document.getElementById("about"),
@@ -126,4 +128,26 @@ function createMap() {
     bakeryMarker.addListener('click', function() {
         bakeryWindow.open(map, bakeryMarker);
     });
+}
+
+/** Creates a chart and adds it to the page. */
+function drawChart() {
+  const data = new google.visualization.DataTable();
+  data.addColumn('string', 'Topping');
+  data.addColumn('number', 'Count');
+        data.addRows([
+          ['Mozzarella', 10],
+          ['Mushroom', 5],
+          ['Chilly', 15]
+        ]);
+
+  const options = {
+    'title': 'Pizza Topping',
+    'width':500,
+    'height':400
+  };
+
+  const chart = new google.visualization.PieChart(
+      document.getElementById('chart'));
+  chart.draw(data, options);
 }
