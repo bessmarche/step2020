@@ -132,23 +132,41 @@ function createMap() {
 
 // drawChart creates a chart and adds it to the page. 
 function drawChart() {
+
+    fetch('/chart-data').then(response => response.json()).then((votes) => {
+         const data = new google.visualization.DataTable();
+         data.addColumn('string', 'Topping');
+         data.addColumn('number', 'Votes');
+         Object.keys(votes).forEach((choice) => {
+             data.addRow([choice, votes[choice]]);
+            });
+
+         const options = {
+            'title': 'Favorite Pizza Flavour',
+            'width':600,
+            'height':500
+        };
+
+        const chart = new google.visualization.PieChart(
+         document.getElementById('chartContainer'));
+         chart.draw(data, options);
+});
 // TODO modify this to accept the user input (see example program) - check the servlet is fine
-  const data = new google.visualization.DataTable();
-  data.addColumn('string', 'Topping');
-  data.addColumn('number', 'Count');
-        data.addRows([
-          ['Mozzarella', 10],
-          ['Mushroom', 5],
-          ['Chilly', 15]
-        ]);
-
-  const options = {
-    'title': 'Pizza Topping',
-    'width':500,
-    'height':400
-  };
-
-  const chart = new google.visualization.PieChart(
-      document.getElementById('chartContainer'));
-  chart.draw(data, options);
+//  const data = new google.visualization.DataTable();
+//  data.addColumn('string', 'Topping');
+//  data.addColumn('number', 'Count');
+//        data.addRows([
+//          ['Mozzarella', 10],
+//          ['Mushroom', 5],
+//          ['Chilly', 15]
+//        ]);
+//
+//  const options = {
+//    'title': 'Pizza Topping',
+//    'width':500,
+//    'height':400
+//  };
+//  const chart = new google.visualization.PieChart(
+//      document.getElementById('chartContainer'));
+//  chart.draw(data, options);
 }
