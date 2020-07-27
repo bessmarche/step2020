@@ -150,23 +150,5 @@ function drawChart() {
         const chart = new google.visualization.PieChart(
          document.getElementById('chartContainer'));
          chart.draw(data, options);
-});
-// TODO modify this to accept the user input (see example program) - check the servlet is fine
-//  const data = new google.visualization.DataTable();
-//  data.addColumn('string', 'Topping');
-//  data.addColumn('number', 'Count');
-//        data.addRows([
-//          ['Mozzarella', 10],
-//          ['Mushroom', 5],
-//          ['Chilly', 15]
-//        ]);
-//
-//  const options = {
-//    'title': 'Pizza Topping',
-//    'width':500,
-//    'height':400
-//  };
-//  const chart = new google.visualization.PieChart(
-//      document.getElementById('chartContainer'));
-//  chart.draw(data, options);
+    });
 }

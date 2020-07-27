@@ -15,6 +15,11 @@
 
 package com.google.sps.servlets;
 
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.util.HashMap;
@@ -30,20 +35,39 @@ import javax.servlet.http.HttpServletResponse;
 public class ChartChoiceServlet extends HttpServlet {
 
   private Map<String, Integer> chartVotes = new HashMap<>();
-
+  
+  /** 
+    * doGet gets the list of votes from the database and sends it to the client 
+   **/
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    Query query = new Query("Vote");
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    PreparedQuery results = datastore.prepare(query);
+    for (Entity entity : results.asIterable()) {
+        String vote =  (String) entity.getProperty("voteValue");
+        int currentVotes = chartVotes.containsKey(vote) ? chartVotes.get(vote) : 0; 
+        chartVotes.put(vote, currentVotes + 1);
+    }
+ 
     response.setContentType("application/json");
     Gson gson = new Gson();
     String json = gson.toJson(chartVotes);
     response.getWriter().println(json);
   }
 
+  /** 
+    * doPost process each vote sent by the client and adds it to the database 
+   **/
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String  vote = request.getParameter("vote");
-    int currentVotes = chartVotes.containsKey(vote) ? chartVotes.get(vote) : 0;
-    chartVotes.put(vote, currentVotes + 1);
+    Entity commentEntity = new Entity("Vote");
+    commentEntity.setProperty("voteValue", vote);
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    datastore.put(commentEntity);
+    //int currentVotes = chartVotes.containsKey(vote) ? chartVotes.get(vote) : 0;
+    //chartVotes.put(vote, currentVotes + 1);
 
     response.sendRedirect("/");
   }
