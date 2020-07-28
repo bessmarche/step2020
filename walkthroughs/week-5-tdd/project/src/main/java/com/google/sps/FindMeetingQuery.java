@@ -51,8 +51,6 @@ public final class FindMeetingQuery {
     }
 
     for(Event event : events){
-        System.out.println(optionalAttendees + " here "+start);
-        
         Collection<String> eventAttendees = event.getAttendees();
         int eventStart = event.getWhen().start();
         int eventEnd = event.getWhen().end();
