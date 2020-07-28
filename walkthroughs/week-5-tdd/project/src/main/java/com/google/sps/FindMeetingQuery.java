@@ -31,12 +31,17 @@ public final class FindMeetingQuery {
    */
   public Collection<TimeRange> query(Collection<Event> events, MeetingRequest request) {
       Collection<String> attendees = request.getAttendees();
+      Collection<String> optionalAttendees = request.getOptionalAttendees();
+
       long meetingDuration = request.getDuration();
+      Boolean considerOptional = true;
       ArrayList<TimeRange> meetingTimes = new ArrayList<TimeRange>();
+      ArrayList<TimeRange> optionalMeetingTimes = new ArrayList<TimeRange>();
+      int optionalStart = TimeRange.START_OF_DAY;
       int start = TimeRange.START_OF_DAY;
-      int end = TimeRange.END_OF_DAY;
+
     
-    if (attendees.isEmpty()){
+    if (attendees.isEmpty()&&optionalAttendees.isEmpty()){
         meetingTimes.add(TimeRange.WHOLE_DAY);
         return meetingTimes;
     }
@@ -46,17 +51,32 @@ public final class FindMeetingQuery {
     }
 
     for(Event event : events){
-        //check the event has participants that are in the attendees
+        System.out.println(optionalAttendees + " here "+start);
+        
         Collection<String> eventAttendees = event.getAttendees();
+        int eventStart = event.getWhen().start();
+        int eventEnd = event.getWhen().end();
+
+        //check the event has participants that are in the attendees
         if(!(Collections.disjoint(attendees, eventAttendees))){
-          int eventStart = event.getWhen().start();
-          int eventEnd = event.getWhen().end();
           //add time before thestart of this event
           if (start + meetingDuration <= eventStart){
              meetingTimes.add(TimeRange.fromStartEnd(start, eventStart, false));
-          }
-          if(start < eventEnd)
-                start =  eventEnd;
+            }
+          if(start < eventEnd){ start = eventEnd;}
+
+          if(optionalStart + meetingDuration <= eventStart){
+                optionalMeetingTimes.add(TimeRange.fromStartEnd(optionalStart, eventStart, false));
+            }
+          if(optionalStart < eventEnd){ optionalStart =  eventEnd;}
+        }
+
+       // check that optional attendees can attend
+        if(!(Collections.disjoint(optionalAttendees, eventAttendees))){
+            if (optionalStart + meetingDuration <= eventStart){
+                optionalMeetingTimes.add(TimeRange.fromStartEnd(optionalStart, eventStart, false));
+            }
+            if(optionalStart < eventEnd){ optionalStart =  eventEnd;}
         }
     }
 
@@ -64,6 +84,14 @@ public final class FindMeetingQuery {
     if (start + meetingDuration <= TimeRange.END_OF_DAY){
              meetingTimes.add(TimeRange.fromStartEnd(start, TimeRange.END_OF_DAY, true));
           }
-    return meetingTimes;
-  }
+    
+    if (optionalStart + meetingDuration <= TimeRange.END_OF_DAY){
+             optionalMeetingTimes.add(TimeRange.fromStartEnd(optionalStart, TimeRange.END_OF_DAY, true));
+          }
+    
+    if(optionalMeetingTimes.isEmpty())
+      {return meetingTimes;}
+     else
+      {return optionalMeetingTimes;}
+ }
 }
