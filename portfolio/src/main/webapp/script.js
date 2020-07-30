@@ -21,7 +21,7 @@ function hide() {
   x.forEach(i => i.style.display = "none");
 }
 
-// showAbout shoieSkill showSocial getComment: functions to show paragraph content when the relevant button is clicked 
+// showAbout showSkill showSocial getComment: functions to show paragraph content when the relevant button is clicked 
 function showAbout() {
   var x = document.getElementById("about");
   if (x.style.display === "none") {
@@ -57,8 +57,8 @@ function getComments() {
 // fetchData sends a request every time the number of displayed comment is changed by the user
 function fetchData(){
  var commElement = document.getElementById("comments");   
- var n_comments = document.getElementById("numberOfComments").value;
- fetch('/data?numberChoice='+n_comments).then(response => response.text()).then((commentsList)=>{
+ var nComments = document.getElementById("numberOfComments").value;
+ fetch('/data?numberChoice='+nComments).then(response => response.text()).then((commentsList)=>{
         var parsedList = JSON.parse(commentsList);
         // add bold and line break tag to each comment
         var html = "";
