@@ -25,8 +25,8 @@ function hide() {
 }
 
 // show(x) function to show paragraph content when the relevant button is clicked 
-function show(x) {
-  var element = document.getElementById(x);
+function show(sectionID) {
+  var element = document.getElementById(sectionID);
   if (element.style.display === "none") {
     hide();
     element.style.display = "flex";
