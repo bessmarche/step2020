@@ -32,21 +32,21 @@ public final class FindMeetingQuery {
   public Collection<TimeRange> query(Collection<Event> events, MeetingRequest request) {
     Collection<String> attendees = request.getAttendees();
     Collection<String> optionalAttendees = request.getOptionalAttendees();
+    long meetingDuration = request.getDuration();
+    ArrayList<TimeRange> meetingTimes = new ArrayList<TimeRange>();
 
     if (attendees.isEmpty()&&optionalAttendees.isEmpty()){
         meetingTimes.add(TimeRange.WHOLE_DAY);
         return meetingTimes;
     }
-    
-    long meetingDuration = request.getDuration();
-    ArrayList<TimeRange> meetingTimes = new ArrayList<TimeRange>();
-    ArrayList<TimeRange> optionalMeetingTimes = new ArrayList<TimeRange>();
-    int optionalStart = TimeRange.START_OF_DAY;
-    int start = TimeRange.START_OF_DAY;
 
     if (meetingDuration > TimeRange.END_OF_DAY){
         return meetingTimes;
     }
+
+    ArrayList<TimeRange> optionalMeetingTimes = new ArrayList<TimeRange>();
+    int optionalStart = TimeRange.START_OF_DAY;
+    int start = TimeRange.START_OF_DAY;
 
     for(Event event : events){
         Collection<String> eventAttendees = event.getAttendees();
