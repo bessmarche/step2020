@@ -30,6 +30,7 @@ public final class FindMeetingQuery {
    ** query IN: collection of events  and details of meeting request. OUT:available times for the meeting
    */
   public Collection<TimeRange> query(Collection<Event> events, MeetingRequest request) {
+
     Collection<String> attendees = request.getAttendees();
     Collection<String> optionalAttendees = request.getOptionalAttendees();
     long meetingDuration = request.getDuration();
@@ -52,30 +53,22 @@ public final class FindMeetingQuery {
         Collection<String> eventAttendees = event.getAttendees();
         int eventStart = event.getWhen().start();
         int eventEnd = event.getWhen().end();
+        TimeRange freeTime = createTime(meetingDuration, event, start, false);
+        TimeRange optionalFreeTime = createTime(meetingDuration, event, optionalStart, false);
 
-        //check the event has participants that are in the attendees. 
         //NOTE Java Collections does not hav a method for intersection hence the use of disjoint + a negation condition.
         if(!(Collections.disjoint(attendees, eventAttendees))){
-          //add time before thestart of this event.
-          if (start + meetingDuration <= eventStart){
-             meetingTimes.add(TimeRange.fromStartEnd(start, eventStart, false));
-            }
+          if (freeTime != null) meetingTimes.add(freeTime);
           if(start < eventEnd) start = eventEnd;
-
-          if(optionalStart + meetingDuration <= eventStart){
-                optionalMeetingTimes.add(TimeRange.fromStartEnd(optionalStart, eventStart, false));
-            }
+          if (optionalFreeTime != null) optionalMeetingTimes.add(optionalFreeTime);
           if(optionalStart < eventEnd) optionalStart =  eventEnd;
         }
 
-       // check that optional attendees can attend.
        //NOTE Java Collections does not hav a method for intersection hence the use of disjoint + a negation condition.
         if(!(Collections.disjoint(optionalAttendees, eventAttendees))){
-            if (optionalStart + meetingDuration <= eventStart){
-                optionalMeetingTimes.add(TimeRange.fromStartEnd(optionalStart, eventStart, false));
-            }
-            if(optionalStart < eventEnd) optionalStart =  eventEnd;
-        }
+            if (optionalFreeTime != null) optionalMeetingTimes.add(optionalFreeTime);
+            if(optionalStart < eventEnd) optionalStart =  eventEnd; 
+        } 
     }
 
     //add time between last event and  end of the day.
@@ -87,10 +80,19 @@ public final class FindMeetingQuery {
          optionalMeetingTimes.add(TimeRange.fromStartEnd(optionalStart, TimeRange.END_OF_DAY, true));
     }
     
+    //check wether to retutn meetingTimes or optionalMeetingTimes
     if(optionalMeetingTimes.isEmpty()){
     return meetingTimes;
     } else {
     return optionalMeetingTimes;
     }
+ }
+
+ public TimeRange createTime (long meetingDuration, Event event, int start, boolean includeEnd){
+    int eventStart = event.getWhen().start();
+    if (start + meetingDuration <= eventStart){
+        return TimeRange.fromStartEnd(start, eventStart, includeEnd);
+    }
+    return null;
  }
 }
