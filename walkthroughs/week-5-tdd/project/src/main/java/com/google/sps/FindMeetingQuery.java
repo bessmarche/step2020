@@ -53,7 +53,8 @@ public final class FindMeetingQuery {
         int eventStart = event.getWhen().start();
         int eventEnd = event.getWhen().end();
 
-        //check the event has participants that are in the attendees.
+        //check the event has participants that are in the attendees. 
+        //NOTE Java Collections does not hav a method for intersection hence the use of disjoint + a negation condition.
         if(!(Collections.disjoint(attendees, eventAttendees))){
           //add time before thestart of this event.
           if (start + meetingDuration <= eventStart){
@@ -68,6 +69,7 @@ public final class FindMeetingQuery {
         }
 
        // check that optional attendees can attend.
+       //NOTE Java Collections does not hav a method for intersection hence the use of disjoint + a negation condition.
         if(!(Collections.disjoint(optionalAttendees, eventAttendees))){
             if (optionalStart + meetingDuration <= eventStart){
                 optionalMeetingTimes.add(TimeRange.fromStartEnd(optionalStart, eventStart, false));
