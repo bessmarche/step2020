@@ -13,7 +13,7 @@
 // limitations under the License.
 
 google.charts.load('current', {'packages':['corechart']});
-google.charts.setOnLoadCallback(drawChart);
+google.charts.setOnLoadCallback(loadChart);
 
 function hide() {
   var x = [ document.getElementById("about"),
@@ -129,26 +129,27 @@ function createMap() {
         bakeryWindow.open(map, bakeryMarker);
     });
 }
+ 
+async function loadChart(){
+    renderChart(await fetchChart());
+}
 
-// drawChart creates a chart and adds it to the page. 
-function drawChart() {
+async function fetchChart() {
+    return await fetch('/chart-data').then(response => response.json());
+}
 
-    fetch('/chart-data').then(response => response.json()).then((votes) => {
-         const data = new google.visualization.DataTable();
-         data.addColumn('string', 'Topping');
-         data.addColumn('number', 'Votes');
-         Object.keys(votes).forEach((choice) => {
-             data.addRow([choice, votes[choice]]);
-            });
+function renderChart(votes) {
+    const data = new google.visualization.DataTable();
+    data.addColumn('string', 'Topping');
+    data.addColumn('number', 'Votes');
+    Object.keys(votes).forEach((choice) => { data.addRow([choice, votes[choice]]);});
 
-         const options = {
-            'title': 'Favorite Pizza Flavour',
-            'width':600,
-            'height':500
-        };
-
-        const chart = new google.visualization.PieChart(
+    const options = {
+         'title': 'Favorite Pizza Flavour',
+         'width':600,
+         'height':500
+    };
+    const chart = new google.visualization.PieChart(
          document.getElementById('chartContainer'));
-         chart.draw(data, options);
-    });
+    chart.draw(data, options);
 }
