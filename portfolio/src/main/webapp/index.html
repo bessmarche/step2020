@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body onload="createMap(); drawChart()">
-    <div id="content">
+    <div id="main">
       <div id="header">
         <img
           src="images/beatricey.png"
@@ -30,14 +30,14 @@
           be working for Google!
         </p>
         <div id="buttonline">
-          <button onclick="show('about')">ABOUT ME</button>
-          <button onclick="show('mapContainer')">WHEN IN ROME</button>
-          <button onclick="show('social')">LET'S BE FRIENDS</button>
-          <button onclick="show('form')">COMMENTS</button>
-          <button onclick="show('chart')">PIZZA CHART</button>
+          <a href="#about"><button onclick="show('about')">ABOUT ME</button></a>
+          <a href="#mapContainer"><button onclick="show('mapContainer')">WHEN IN ROME</button></a>
+          <a href="#socialLink"><button onclick="show('social')">LET'S BE FRIENDS</button></a>
+          <a href="#form"><button onclick="show('form')">COMMENTS</button></a>
+          <a href="#chart"><button onclick="show('chart')">PIZZA CHART</button></a>
         </div>
       </div>
-      <div id="about" class="para" style="display: none;">
+      <a id="about" class="para" style="display: none;">
         <h1>About me</h1>
         Born and raised in Italy.<br />
         Have been living in the UK for 5 years.<br />
@@ -62,8 +62,8 @@
         I've been riding horses since I was a child, currently I am the Novice
         Captain of my university team<br />
         More coming soon!
-      </div>
-      <div id="mapContainer" class="para" style="display: none;">
+      </a>
+      <a id="mapContainer" class="para" style="display: none;">
         <div>
           <h2><i>"Oh Rome! My country! City of the soul!" - Lord Byron</i></h2>
           You've probably heard of some of Rome most famous landmarks, like the
@@ -75,23 +75,19 @@
         <br />
         <br />
         <div id="map"></div>
-      </div>
+      </a>
       <div id="social" class="para" style="display: none;">
-        Want to keep in touch? Follow me on:<br />
+        <a id="socialLink"><h1>Let's be friend</h1></a>
+        Want to keep in touch? Follow me on:
+        <br />
         <a href="https://github.com/bessmarche" target="_blank">GitHub</a>
         <br />
-        <a href="https://www.instagram.com/beatricemarchegiani" target="_blank"
-          >Instagram</a
-        >
+        <a href="https://www.instagram.com/beatricemarchegiani" target="_blank">Instagram</a>
         <br />
-        <a
-          href="https://www.linkedin.com/in/beatrice-marchegiani-a24206117"
-          target="_blank"
-          >Linkedin</a
-        >
+        <a href="https://www.linkedin.com/in/beatrice-marchegiani-a24206117" target="_blank">Linkedin</a>
         <br />
       </div>
-      <div id="form" class="para">
+      <a id="form" class="para">
         <ul id="comments"></ul>
         <form action="/data" method="POST">
           <h1>Leave a comment here:</h1>
@@ -113,8 +109,8 @@
           <option value="20">20</option>
           <option value="-1">Show All</option>
         </select>
-      </div>
-      <div id="chart" class="para" style="display: none;">
+      </a>
+      <a id="chart" class="para" style="display: none;">
         <div id="chartContainer"></div>
         <h2>Vote</h2>
         <form action="/chart-data" method="POST">
@@ -129,7 +125,7 @@
           <br />
           <button>Submit Your Choice</button>
         </form>
-      </div>
+      </a>
     </div>
     <script type="text/javascript">
       fetchData();
