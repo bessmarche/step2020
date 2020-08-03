@@ -1,5 +1,5 @@
-body{
-  background:  #435969;
+body {
+  background: #435969;
 }
 
 #content {
@@ -8,25 +8,25 @@ body{
   justify-content: center;
   color: #435969;
   flex-direction: column;
-  font-family: Arial, Helvetica, sans-serif;  
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-#header { 
+#header {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  text-align: center; 
-  padding: 50px; 
+  text-align: center;
+  padding: 50px;
   margin: 50px 50px 20px 50px;
-  background: #e7f0ed  
+  background: #e7f0ed;
 }
 
-p{
-font-size: 1.0em;
+p {
+  font-size: 1em;
 }
 
-#buttonline{
+#buttonline {
   flex-direction: row;
 }
 
@@ -52,30 +52,30 @@ button:hover {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  text-align: center; 
-  padding: 50px; 
+  text-align: center;
+  padding: 50px;
   margin-top: 0;
   margin: 0px 50px 50px 50px;
-  background: #e7f0ed  
+  background: #e7f0ed;
 }
 
 #map {
-  border: 10px solid  #feca00;
+  border: 10px solid #feca00;
   height: 600px;
   width: 600px;
 }
 
-#comments{
+#comments {
   width: 100%;
 }
 
-li{
+li {
   display: flex;
   justify-content: space-between;
   align-content: baseline;
 }
 
-input[type=submit] {
+input[type='submit'] {
   outline: none;
   border: 5px solid #e7f0ed;
   padding: 10px 10px;
@@ -85,18 +85,18 @@ input[type=submit] {
   background: #feca00;
   transition: all 0.2s ease-in-out;
 }
-input[type=submit]:hover {
+input[type='submit']:hover {
   cursor: pointer;
   background: #f87f00;
   color: white;
 }
 
-.delete{
+.delete {
   margin: 0;
   padding: 5px 8px;
   border: 0;
   color: #e7f0ed;
   text-align: center;
-  font-size: 0.7em; 
+  font-size: 0.7em;
   background: #435969;
 }
