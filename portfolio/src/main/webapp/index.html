@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Beatrice</title>
+    <title>Personal Portfolio | Beatrice</title>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFHL1VTHTuhrDcATKcgLjCnj82I0qzYVo"></script>
     <script src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="script.js"></script>
@@ -72,19 +72,22 @@
       </a>
       <a id="mapContainer" class="para" style="display: none;">
         <div>
+          <h1> When in Rome </h1>
           <h2><i>"Oh Rome! My country! City of the soul!" - Lord Byron</i></h2>
+          <p>
           You've probably heard of some of Rome most famous landmarks, like the
           Collosseum or St. Peter Basilica on this map you'll find some "hidden
           gems" of the Eternal City.<br />
           These are some of my favourite places to grab a snack, I hope next
           time you'll visit Rome you'll stop by and check them out.
+          </p>
         </div>
         <br />
         <br />
         <div id="map"></div>
       </a>
       <div id="social" class="para" style="display: none;">
-        <a id="socialLink"><h1>Let's be friend</h1></a>
+        <a id="social"><h1>Let's be friend</h1></a>
         Want to keep in touch? Follow me on:
         <br />
         <a href="https://github.com/bessmarche" target="_blank">GitHub</a>
@@ -98,12 +101,12 @@
         <ul id="comments"></ul>
         <form action="/data" method="POST">
           <h1>Leave a comment here:</h1>
-          <input type="text" name="user-comment" />
+          <textarea name="user-comment"></textarea>
           <br /><br />
           <input type="submit" />
         </form>
-        <button onclick="fetchDeleteData()">Delete All Comments</button>
         <br />
+        <div id=numCom>
         <label for="numberChoice">How many comments do you want to see?</label>
         <select
           name="numberChoice"
@@ -116,8 +119,11 @@
           <option value="20">20</option>
           <option value="-1">Show All</option>
         </select>
+        </div>
+        <button id="delete" onclick="fetchDeleteData()">Delete All Comments</button>
       </a>
       <a id="chart" class="para" style="display: none;">
+        <h1> Pizza Chart </h1>
         <div id="chartContainer"></div>
         <h2>Vote</h2>
         <form action="/chart-data" method="POST">

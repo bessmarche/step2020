@@ -83,6 +83,9 @@ li {
   display: flex;
   justify-content: space-between;
   align-content: baseline;
+  background-color: #B8D4D6;
+  padding: 20px;
+  margin: 10px;
 }
 
 input[type='submit'] {
@@ -102,11 +105,23 @@ input[type='submit']:hover {
 }
 
 .delete {
-  margin: 0;
-  padding: 5px 8px;
-  border: 0;
-  color: #e7f0ed;
-  text-align: center;
-  font-size: 0.7em;
-  background: #435969;
+    margin: 0;
+    padding: 5px 8px;
+    border: 0;
+    color: #e7f0ed;
+    text-align: center;
+    font-size: 0.7em;
+    background: #435969;
+}
+
+#delete {
+  background-color: transparent;
+  font-size: medium;
+}
+#delete:hover{
+  color: #f87f00;
+}
+
+#numCom {
+    flex-direction: row;
 }
