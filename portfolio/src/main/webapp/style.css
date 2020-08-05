@@ -27,7 +27,7 @@ p {
   text-align: justify;
 }
 
-#buttonline {
+.buttonline {
   text-align: center;
   flex-direction: row;
 }
@@ -124,4 +124,35 @@ input[type='submit']:hover {
 
 #numCom {
     flex-direction: row;
+}
+
+.fa {
+  font: normal normal normal 30px/1 FontAwesome;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  width: 30px;
+  margin: 5px 2px;
+  border-radius: 50%;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
+}
+
+.fa-instagram {
+  background: #125688;
+  color: white;
+}
+
+
+.fa-github {
+  background:#2c4762;
+  color: white;
 }

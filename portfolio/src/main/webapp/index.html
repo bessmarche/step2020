@@ -6,6 +6,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFHL1VTHTuhrDcATKcgLjCnj82I0qzYVo"></script>
     <script src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css" />
   </head>
   <body onload="showAnchor(); createMap(); drawChart()">
@@ -30,7 +31,7 @@
           cake anyone?). This is my first work experience and I'm so excited to
           be working for Google!
         </p>
-        <div id="buttonline">
+        <div class="buttonline">
           <a href="#about"><button onclick="show('about')">ABOUT ME</button></a>
           <a href="#mapContainer"><button onclick="show('mapContainer')">WHEN IN ROME</button></a>
           <a href="#social"><button onclick="show('social')">LET'S BE FRIENDS</button></a>
@@ -90,12 +91,11 @@
         <a id="social"><h1>Let's be friend</h1></a>
         Want to keep in touch? Follow me on:
         <br />
-        <a href="https://github.com/bessmarche" target="_blank">GitHub</a>
-        <br />
-        <a href="https://www.instagram.com/beatricemarchegiani" target="_blank">Instagram</a>
-        <br />
-        <a href="https://www.linkedin.com/in/beatrice-marchegiani-a24206117" target="_blank">Linkedin</a>
-        <br />
+        <div class="buttonline">
+         <a href="https://github.com/bessmarche" class="fa fa-github"></a>
+         <a href="https://www.instagram.com/beatricemarchegiani" class="fa fa-instagram"></a>
+         <a href="https://www.linkedin.com/in/beatrice-marchegiani-a24206117" class="fa fa-linkedin"></a>
+        </div>
       </div>
       <a id="form" class="para" style="display: none;">
         <ul id="comments"></ul>
