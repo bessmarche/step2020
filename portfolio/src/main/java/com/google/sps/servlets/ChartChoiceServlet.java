@@ -69,6 +69,6 @@ public class ChartChoiceServlet extends HttpServlet {
     //int currentVotes = chartVotes.containsKey(vote) ? chartVotes.get(vote) : 0;
     //chartVotes.put(vote, currentVotes + 1);
 
-    response.sendRedirect("/");
+    response.sendRedirect("/#chart");
   }
 }

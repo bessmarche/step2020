@@ -35,6 +35,14 @@ function show(x) {
   }
 }
 
+// showAnchor check if the url includes a specific anchor and if so show the corresponding paragraph using the show() function
+function showAnchor(){
+    if(window.location.hash) {
+      var hash = window.location.hash.substring(1); //Puts hash in variable, and removes the # character
+      show(hash);
+  }
+}
+
 // fetchData sends a request every time the number of displayed comment is changed by the user
 function fetchData() {
   var commElement = document.getElementById('comments');

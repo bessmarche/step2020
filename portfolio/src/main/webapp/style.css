@@ -3,6 +3,8 @@ body {
 }
 
 #main {
+  margin: auto;
+  max-width: 1500px;
   font-family: Arial, Helvetica, sans-serif;
   color: #435969;
   align-items: center;
@@ -15,7 +17,6 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  text-align: center;
   padding: 50px;
   margin: 50px 50px 20px 50px;
   background: #e7f0ed;
@@ -23,9 +24,11 @@ body {
 
 p {
   font-size: 1em;
+  text-align: justify;
 }
 
 #buttonline {
+  text-align: center;
   flex-direction: row;
 }
 
@@ -58,10 +61,18 @@ button:hover {
   background: #e7f0ed;
 }
 
+#about {
+  align-items: baseline;
+}
+
 #map {
   border: 10px solid #feca00;
   height: 600px;
   width: 600px;
+}
+
+#chartContainer {
+  border: 10px solid #feca00;
 }
 
 #comments {
