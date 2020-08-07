@@ -1,19 +1,27 @@
 # Google Student Training in Engineering Program
 
-Welcome! It's B, a Google STEP Intern 2020. 
-This repo contains the projects I'll work on for the first half of my internship.
+Welcome! It's Beatrice, a Google STEP Intern 2020. 
+ 
+This repo contains the projects I've worked on for the first half of my internship.
+During the first 5 weeks of my internship I have learned a variety of web development tools, and put what I've learned into practice by developing my own personal portfolio. 
+
+Check it out on: [Personal Portfolio | Beatrice](https://beatricemarch-step-2020.uc.r.appspot.com/)
+
 This work is based on the [Google Software Product Sprint](https://g.co/softwareproductsprint) program.
 
 Enjoy :)
 
 
-# Getting Started 
+# My portfolio
 
-To get started:
+![alt text](portfolioImg/homepage.png)
 
-- Login to [Google Cloud Shell](https://ssh.cloud.google.com/cloudshell/editor)
-- Clone this repo: `cd; git clone https://github.com/googleinterns/step.git`
-- Open the GitHub setup walkthrough: `teachme ~/step/walkthroughs/week-1-setup/github-setup-walkthrough.md`
-  - If the tutorial panel does not open or display the walkthrough contents, try refreshing the page.
+![alt text](portfolioImg/about.png)
 
-Then follow the on-screen instructions to set up your repo.
+![alt text](portfolioImg/social.png)
+
+![alt text](portfolioImg/comment.png)
+
+![alt text](portfolioImg/map.png)
+
+![alt text](portfolioImg/chart.png)
