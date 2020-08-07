@@ -57,7 +57,7 @@ function fetchData() {
         var id = x.propertyMap.id;
         var text = x.propertyMap.text;
         html +=
-          '<li id=' +
+          '<li class="comment" id=' +
           id +
           '>' +
           text +

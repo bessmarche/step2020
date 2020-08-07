@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>Personal Portfolio | Beatrice</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,500;1,300;1,500&display=swap" rel="stylesheet">
     <link rel="icon" href="images/icon.png" type="image/jpg">
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFHL1VTHTuhrDcATKcgLjCnj82I0qzYVo"></script>
     <script src="https://www.gstatic.com/charts/loader.js"></script>
@@ -18,8 +19,20 @@
           alt="Beatrice"
           style="width: 200px; height: 200px;"
         />
-        <h1>Hello world!</h1>
+        <h1>Hello World</h1>
+        <hr>
         <h2><i>It's-a-me, Beatrice!</i></h2>
+        <div class="buttonline">
+          <a href="#about"><button onclick="show('about')">ABOUT ME</button></a>
+          <a href="#social"><button onclick="show('social')">LET'S BE FRIENDS</button></a>
+          <a href="#form"><button onclick="show('form')">COMMENTS</button></a>
+          <a href="#mapContainer"><button onclick="show('mapContainer')">WHEN IN ROME</button></a>
+          <a href="#chart"><button onclick="show('chart')">PIZZA CHART</button></a>
+        </div>
+      </div>
+      <div id="about" class="para" style="display: none;">
+        <h1>About me</h1>
+        <hr style="margin-left:0;">
         <p>
           I am a <b>STEP Intern</b> in the Plx ZRH
           team. I was born and raised in <b>Italy</b> and I’ve been living in
@@ -32,56 +45,39 @@
           cake anyone?). This is my first work experience and I'm so excited to
           be working for Google!
         </p>
-        <div class="buttonline">
-          <a href="#about"><button onclick="show('about')">ABOUT ME</button></a>
-          <a href="#mapContainer"><button onclick="show('mapContainer')">WHEN IN ROME</button></a>
-          <a href="#social"><button onclick="show('social')">LET'S BE FRIENDS</button></a>
-          <a href="#form"><button onclick="show('form')">COMMENTS</button></a>
-          <a href="#chart"><button onclick="show('chart')">PIZZA CHART</button></a>
-        </div>
-      </div>
-      <a id="about" class="para" style="display: none;">
-        <h1>About me</h1>
-        <p>
-        Born and raised in Italy.<br />
-        Have been living in the UK for 5 years.<br />
-        Studying CS and Philosophy at the University of Oxford.<br />
-        When not coding you can find me horse riding.<br />
-        </p>
         <h1>My CS background</h1>
+        <hr style="margin-left:0;">
         <p>
-        I’ve started studying CS at university.<br />
-        The topics I’ve covered include Functional Programming, Object Oriented
-        Programming, Algs and Data Structures, Logic and Models of Computations
-        The languages I have used include Scala, Haskell (love it), and
-        Python.<br />
-        I haven’t done any major projects but I like doing Hackatons and coding
-        with my friends.<br />
+        I am a Computer Science student at Oxford University.<br />
+        The topics I’ve covered in my degree include <b>Functional Programming, Object Oriented
+        Programming, Algorithm and Data Structures, Logic and Models of Computations</b><br />
+        I like taking parts in Hackatons and coding challenges with my friends. I have partecipated in <b>OxfordHack 2019</b> and <b>AI Impact Weekend 2020</b> where my team was shortlisted as finalist<br />
         </p>
         <h1><i>"It's not a bug, it's a feature!"</i></h1>
-        Here is a random assortment of things I can do. Are they a bug? Are they
-        a feature? It's up to you to decide :) <br />
-        <br />
+        <hr style="margin-left:0;"> 
         <p>
-        I like coding (obviously), I am familiar with the following languages:
-        Python, Haskell, Scala, JS, html and CSS<br />
-        I also like studying philosophy. My favourite field is Philosophy of
-        Logic and Language<br />
-        I've been riding horses since I was a child, currently I am the Novice
-        Captain of my university team<br />
+        Here is a random assortment of things I can do. Are they a bug? Are they
+        a feature? It's up to you to decide <br />
+        I like coding (obviously), I am familiar with the following languages: <b>Python, Haskell, Scala, JS, html and CSS</b><br />
+        I also like studying philosophy. My favourite field is <b>Philosophy of
+        Logic and Language</b><br />
+        I've been riding horses since I was a child, currently I am <b>the Novice
+        Captain of my university team</b><br />
         More coming soon!
         </p>
-      </a>
-      <a id="mapContainer" class="para" style="display: none;">
+      </div>
+      <div id="mapContainer" class="para" style="display: none;">
         <div>
           <h1> When in Rome </h1>
+          <hr>
           <p>
            As part of my internship I need to learn about libraries that provide access to various
-features of Google Cloud. 
-           On this page I've explored different features of Google Maps library, which lets you add an
+features of <b>Google Cloud.</b> 
+           On this page I've explored different features of <b>Google Maps library</b>, which lets you add an
 interactive Google Map to a webpage.
           </p>
           <h2><i>"Oh Rome! My country! City of the soul!" - Lord Byron</i></h2>
+          <hr>
           <p>
           You've probably heard of some of Rome most famous landmarks, like the
           Collosseum or St. Peter Basilica on this map you'll find some "hidden
@@ -93,10 +89,11 @@ interactive Google Map to a webpage.
         <br />
         <br />
         <div id="map"></div>
-      </a>
+      </div>
       <div id="social" class="para" style="display: none;">
-        <a id="social"><h1>Let's be friend</h1></a>
-        Want to keep in touch? Follow me on:
+       <h1>Let's be friend</h1>
+       <hr>
+        <h2>Want to keep in touch? Follow me on:</h2>
         <br />
         <div class="buttonline">
          <a href="https://github.com/bessmarche" class="fa fa-github"></a>
@@ -104,13 +101,15 @@ interactive Google Map to a webpage.
          <a href="https://www.linkedin.com/in/beatrice-marchegiani-a24206117" class="fa fa-linkedin"></a>
         </div>
       </div>
-      <a id="form" class="para" style="display: none;">
+      <div id="form" class="para" style="display: none;">
+        <h1>Comments</h1>
+        <hr>
         <ul id="comments"></ul>
         <form action="/data" method="POST">
           <h1>Leave a comment here:</h1>
           <textarea name="user-comment"></textarea>
           <br /><br />
-          <input type="submit" />
+          <input type="submit" value="SUBMIT" />
         </form>
         <br />
         <div id=numCom>
@@ -128,13 +127,14 @@ interactive Google Map to a webpage.
         </select>
         </div>
         <button id="delete" onclick="fetchDeleteData()">Delete All Comments</button>
-      </a>
-      <a id="chart" class="para" style="display: none;">
+      </div>
+      <div id="chart" class="para" style="display: none;">
         <h1> Pizza Chart </h1>
+        <hr>
         <p>
-        As part of my internship I need to learn about libraries that provide access to various
-features of Google Cloud. 
-        On this page I've explored different features of Google Charts library, which lets you add an
+        As part of my internship I need to learn about <b>libraries</b> that provide access to various
+features of <b>Google Cloud.</b> 
+        On this page I've explored different features of <b>Google Charts library</b>, which lets you add an
 interactive chart to a webpage. 
         <br>
         I've taken this opportunity to settle once and for all the age-old question <b> "what is the best pizza topping?"  </b>
@@ -153,7 +153,7 @@ interactive chart to a webpage.
           <br />
           <button>Submit Your Choice</button>
         </form>
-      </a>
+      </div>
     </div>
     <script type="text/javascript">
       fetchData();
