@@ -169,7 +169,7 @@ function drawChart() {
 
       const options = {
         title: 'Favorite Pizza Flavour',
-        width: 600,
+        width: 500,
         height: 500,
       };
 

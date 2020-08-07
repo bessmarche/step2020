@@ -77,7 +77,7 @@ button:hover {
 #map {
   border: 10px solid #feca00;
   height: 600px;
-  width: 600px;
+  width: 600;
 }
 
 #chartContainer {
