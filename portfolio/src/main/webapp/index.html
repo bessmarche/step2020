@@ -1,13 +1,15 @@
+
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">
     <title>Beatrice</title>
-      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFHL1VTHTuhrDcATKcgLjCnj82I0qzYVo"></script>
-    <link rel="stylesheet" href="style.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFHL1VTHTuhrDcATKcgLjCnj82I0qzYVo"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
   </head>
-  <body onload="createMap();">
+  <body onload="createMap(); loadChart()">
     <div id="content">
      <div id= "header">
       <img src="images/beatricey.png" alt="Beatrice" style="width:170px;height:170px;">  
@@ -43,8 +45,8 @@
         </div>
         <div id="mapContainer" class="para" style="display:none;"> 
             <div>
-                <h2><i>"Oh Rome! My country! City of the soul!" - Lord Byron</i>></h2>
-                You've probably heard of some of Rome most famous landmarks, like the Collosseum or St. Peter Basilica on this map you'll find some "hidden gems" of the Etarnal City.<br>
+                <h2><i>"Oh Rome! My country! City of the soul!" - Lord Byron</i></h2>
+                You've probably heard of some of Rome most famous landmarks, like the Collosseum or St. Peter Basilica on this map you'll find some "hidden gems" of the Eternal City.<br>
                 These are some of my favourite places to grab a snack, I hope next time you'll visit Rome you'll stop by and check them out.  
             </div>
             <br>
@@ -74,6 +76,22 @@
                      <option value="20">20</option>
                      <option value="-1">Show All</option>
                  </select> 
+        </div>
+        <div id="chart" class="para" style="display:none;">
+            <div id="chartContainer"></div>  
+            <h2>Vote</h2>
+            <form action="/chart-data" method="POST">
+                <select name="vote">
+                      <option value="Mozzarella">Mozzarella</option>
+                      <option value="Onion">Onion</option>
+                      <option value="Anchovies">Anchovies</option>
+                      <option value="Chilly">Chilly</option>
+                       <option value="Pineapple :(">Pineapple :(</option>
+                      <option value="Mushroom">Mushroom</option>
+                </select>
+           <br>
+           <button>Submit Your Choice</button>
+           </form>
         </div>
     </div>
     <script type="text/javascript">

@@ -12,45 +12,25 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(loadChart);
 
 function hide() {
   var x = [ document.getElementById("about"),
             document.getElementById("mapContainer"),
             document.getElementById("social"),
-            document.getElementById("form")];
+            document.getElementById("form"),
+            document.getElementById("chart")];
   x.forEach(i => i.style.display = "none");
 }
 
-// showAbout showSkill showSocial getComment: functions to show paragraph content when the relevant button is clicked 
-function showAbout() {
-  var aboutElement = document.getElementById("about");
-  if (aboutElement.style.display === "none") {
+// show(x) function to show paragraph content when the relevant button is clicked 
+function show(sectionID) {
+  var element = document.getElementById(sectionID);
+  if (element.style.display === "none") {
+
     hide();
-    aboutElement.style.display = "flex";
-  } 
-}
-
-function showMap() {
-  var mapElement = document.getElementById("mapContainer");
-  if (mapElement.style.display === "none") {
-    hide();  
-    mapElement.style.display = "flex";
-  } 
-}
-
-function showSocial() {
-  var formElement = document.getElementById("social");
-  if (formElement.style.display === "none") {
-    hide();  
-    formElement.style.display = "flex";
-  }
-}
-
-function getComments() {
-  var commElement = document.getElementById("form");
-  if (commElement.style.display === "none") {
-    hide();
-    commElement.style.display = "flex";
+    element.style.display = "flex";
   } 
 }
 
@@ -155,4 +135,28 @@ function createMap() {
     bakeryMarker.addListener('click', function() {
         bakeryWindow.open(map, bakeryMarker);
     });
+}
+ 
+async function loadChart(){
+    renderChart(await fetchChart());
+}
+
+async function fetchChart() {
+    return await fetch('/chart-data').then(response => response.json());
+}
+
+function renderChart(votes) {
+    const data = new google.visualization.DataTable();
+    data.addColumn('string', 'Topping');
+    data.addColumn('number', 'Votes');
+    Object.keys(votes).forEach((choice) => { data.addRow([choice, votes[choice]]);});
+
+    const options = {
+         'title': 'Favorite Pizza Flavour',
+         'width':600,
+         'height':500
+    };
+    const chart = new google.visualization.PieChart(
+         document.getElementById('chartContainer'));
+    chart.draw(data, options);
 }
