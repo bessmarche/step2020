@@ -33,6 +33,7 @@ import java.util.*;
 /** Servlet to delete the comments data from the database. */
 @WebServlet("/delete-data")
 public class DeleteServlet extends HttpServlet {
+    
   /** 
     * doPost iterate trough all comment entities and deletes them from the database 
    **/
@@ -43,7 +44,6 @@ public class DeleteServlet extends HttpServlet {
     Query query = new Query("Comment");
 
     if(commentID.isEmpty()){
-         //iterate trough the entities in the database and delete them
         for (Entity entity : datastore.prepare(query).asIterable()) {
             datastore.delete(entity.getKey());
         }

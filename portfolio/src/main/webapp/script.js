@@ -63,7 +63,7 @@ function fetchData(){
     });
 }
 
-// renederComment takes the comment text and id and returns it as a string with the commente as an html <li> element
+// renderComment for each comment takes the comment text and id and returns it as a string with the comment as an html <li> element
 function renderComment (list) {
     var commElement = document.getElementById("comments"); 
     var html = "";
