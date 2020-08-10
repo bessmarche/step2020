@@ -28,27 +28,34 @@ function hide() {
 function show(sectionID) {
   var element = document.getElementById(sectionID);
   if (element.style.display === "none") {
+
     hide();
     element.style.display = "flex";
   } 
 }
 
 // fetchData sends a request every time the number of displayed comment is changed by the user
-function fetchData(){
- var commElement = document.getElementById("comments");   
+function fetchData(){  
  var n_comments = document.getElementById("numberOfComments").value;
  fetch('/data?numberChoice='+n_comments).then(response => response.text()).then((commentsList)=>{
         var parsedList = JSON.parse(commentsList);
-        // add bold and line break tag to each comment
-        var html = "";
-        parsedList.forEach(x=>{
+        renderComment(parsedList);
+    });
+}
+
+// renderComment for each comment takes the comment text and id and returns it as a string with the comment as an html <li> element
+function renderComment (list) {
+    var commElement = document.getElementById("comments"); 
+    var html = "";
+    list.forEach(x=>{
             var id = x.propertyMap.id;
             var text = x.propertyMap.text;
-            html+='<li id='+id+'>'+text+'<button class="delete" onclick="deleteComment('+id+')">X</button></li>';
+            html+= '<li id='+id+'>'+text+'<button class="delete" onclick="deleteComment('+id+')">X</button></li>';
             });
         // add the comments to the html page    
         commElement.innerHTML = html; 
-    });
+    return(html)
+
 }
 
 // fetchDeleteData sends a POST request every time the delete button is clicked by the user
