@@ -13,7 +13,7 @@
 // limitations under the License.
 
 google.charts.load('current', {'packages':['corechart']});
-google.charts.setOnLoadCallback(drawChart);
+google.charts.setOnLoadCallback(loadChart);
 
 function hide() {
   var x = [ document.getElementById("about"),
@@ -25,30 +25,37 @@ function hide() {
 }
 
 // show(x) function to show paragraph content when the relevant button is clicked 
-function show(x) {
-  var element = document.getElementById(x);
+function show(sectionID) {
+  var element = document.getElementById(sectionID);
   if (element.style.display === "none") {
+
     hide();
     element.style.display = "flex";
   } 
 }
 
 // fetchData sends a request every time the number of displayed comment is changed by the user
-function fetchData(){
- var commElement = document.getElementById("comments");   
+function fetchData(){  
  var n_comments = document.getElementById("numberOfComments").value;
  fetch('/data?numberChoice='+n_comments).then(response => response.text()).then((commentsList)=>{
         var parsedList = JSON.parse(commentsList);
-        // add bold and line break tag to each comment
-        var html = "";
-        parsedList.forEach(x=>{
+        renderComment(parsedList);
+    });
+}
+
+// renderComment for each comment takes the comment text and id and returns it as a string with the comment as an html <li> element
+function renderComment (list) {
+    var commElement = document.getElementById("comments"); 
+    var html = "";
+    list.forEach(x=>{
             var id = x.propertyMap.id;
             var text = x.propertyMap.text;
-            html+='<li id='+id+'>'+text+'<button class="delete" onclick="deleteComment('+id+')">X</button></li>';
+            html+= '<li id='+id+'>'+text+'<button class="delete" onclick="deleteComment('+id+')">X</button></li>';
             });
         // add the comments to the html page    
         commElement.innerHTML = html; 
-    });
+    return(html)
+
 }
 
 // fetchDeleteData sends a POST request every time the delete button is clicked by the user
@@ -129,26 +136,27 @@ function createMap() {
         bakeryWindow.open(map, bakeryMarker);
     });
 }
+ 
+async function loadChart(){
+    renderChart(await fetchChart());
+}
 
-// drawChart creates a chart and adds it to the page. 
-function drawChart() {
+async function fetchChart() {
+    return await fetch('/chart-data').then(response => response.json());
+}
 
-    fetch('/chart-data').then(response => response.json()).then((votes) => {
-         const data = new google.visualization.DataTable();
-         data.addColumn('string', 'Topping');
-         data.addColumn('number', 'Votes');
-         Object.keys(votes).forEach((choice) => {
-             data.addRow([choice, votes[choice]]);
-            });
+function renderChart(votes) {
+    const data = new google.visualization.DataTable();
+    data.addColumn('string', 'Topping');
+    data.addColumn('number', 'Votes');
+    Object.keys(votes).forEach((choice) => { data.addRow([choice, votes[choice]]);});
 
-         const options = {
-            'title': 'Favorite Pizza Flavour',
-            'width':600,
-            'height':500
-        };
-
-        const chart = new google.visualization.PieChart(
+    const options = {
+         'title': 'Favorite Pizza Flavour',
+         'width':600,
+         'height':500
+    };
+    const chart = new google.visualization.PieChart(
          document.getElementById('chartContainer'));
-         chart.draw(data, options);
-    });
+    chart.draw(data, options);
 }

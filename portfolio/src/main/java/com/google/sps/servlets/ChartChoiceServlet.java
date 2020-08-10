@@ -41,9 +41,8 @@ public class ChartChoiceServlet extends HttpServlet {
    **/
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    Query query = new Query("Vote");
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-    PreparedQuery results = datastore.prepare(query);
+    PreparedQuery results = datastore.prepare(new Query("Vote"));
     for (Entity entity : results.asIterable()) {
         String vote =  (String) entity.getProperty("voteValue");
         int currentVotes = chartVotes.containsKey(vote) ? chartVotes.get(vote) : 0; 
@@ -66,8 +65,6 @@ public class ChartChoiceServlet extends HttpServlet {
     voteEntity.setProperty("voteValue", vote);
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     datastore.put(voteEntity);
-    //int currentVotes = chartVotes.containsKey(vote) ? chartVotes.get(vote) : 0;
-    //chartVotes.put(vote, currentVotes + 1);
 
     response.sendRedirect("/");
   }
