@@ -14,6 +14,8 @@
 
 package com.google.sps.servlets;
 
+import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
@@ -31,19 +33,26 @@ import java.util.*;
 /** Servlet to delete the comments data from the database. */
 @WebServlet("/delete-data")
 public class DeleteServlet extends HttpServlet {
+    
   /** 
     * doPost iterate trough all comment entities and deletes them from the database 
    **/
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    
-    //iterate trough the entities in the database and delete them
+    String commentID = request.getParameter("idComment");
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     Query query = new Query("Comment");
-    for (Entity entity : datastore.prepare(query).asIterable()) {
-        datastore.delete(entity.getKey());
-    }
 
+    if(commentID.isEmpty()){
+        for (Entity entity : datastore.prepare(query).asIterable()) {
+            datastore.delete(entity.getKey());
+        }
+    } else {
+        //parse id to long and delete entity with corresponding id
+        long id = Long.parseLong(commentID);
+        Key commentKey = KeyFactory.createKey("Comment", id);
+        datastore.delete(commentKey);
+    }
     response.sendRedirect("/");
   }
 

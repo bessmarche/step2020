@@ -23,18 +23,18 @@ function hide() {
 
 // showAbout showSkill showSocial getComment: functions to show paragraph content when the relevant button is clicked 
 function showAbout() {
-  var x = document.getElementById("about");
-  if (x.style.display === "none") {
+  var aboutElement = document.getElementById("about");
+  if (aboutElement.style.display === "none") {
     hide();
-    x.style.display = "block";
+    aboutElement.style.display = "block";
   } 
 }
 
 function showSkill() {
-  var x = document.getElementById("skills");
-  if (x.style.display === "none") {
+  var skillElement = document.getElementById("skills");
+  if (skillElement.style.display === "none") {
     hide();  
-    x.style.display = "block";
+    skillElement.style.display = "block";
   } 
 }
 
@@ -47,30 +47,44 @@ function showSocial() {
 }
 
 function getComments() {
-  var x = document.getElementById("form");
-  if (x.style.display === "none") {
+  var commElement = document.getElementById("form");
+  if (commElement.style.display === "none") {
     hide();
-    x.style.display = "block";
+    commElement.style.display = "block";
   } 
 }
 
 // fetchData sends a request every time the number of displayed comment is changed by the user
-function fetchData(){
- var commElement = document.getElementById("comments");   
- var nComments = document.getElementById("numberOfComments").value;
- fetch('/data?numberChoice='+nComments).then(response => response.text()).then((commentsList)=>{
+function fetchData(){  
+ var n_comments = document.getElementById("numberOfComments").value;
+ fetch('/data?numberChoice='+n_comments).then(response => response.text()).then((commentsList)=>{
         var parsedList = JSON.parse(commentsList);
-        // add bold and line break tag to each comment
-        var html = "";
-        parsedList.forEach(x=>{
-            html+='<b>'+x+'</b>'+'<br>'
+        renderComment(parsedList);
+    });
+}
+
+// renderComment for each comment takes the comment text and id and returns it as a string with the comment as an html <li> element
+function renderComment (list) {
+    var commElement = document.getElementById("comments"); 
+    var html = "";
+    list.forEach(x=>{
+            var id = x.propertyMap.id;
+            var text = x.propertyMap.text;
+            html+= '<li id='+id+'>'+text+'<button class="delete" onclick="deleteComment('+id+')">X</button></li>';
             });
         // add the comments to the html page    
         commElement.innerHTML = html; 
-    });
+    return(html)
+
 }
 
 // fetchDeleteData sends a POST request every time the delete button is clicked by the user
 function fetchDeleteData(){
-    fetch('/delete-data', {method: 'POST'}).then(() => fetchData());
+    fetch('/delete-data?idComment=', {method: 'POST'}).then(() => fetchData());
+  }
+
+// deleteComment send a POST request to delete a sigle comment when the user clicks the button
+function deleteComment(id){
+    // TODO: finish bthis function
+    fetch('/delete-data?idComment='+id, {method: 'POST'}).then(() => fetchData());
 }

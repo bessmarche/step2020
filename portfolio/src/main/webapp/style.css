@@ -59,6 +59,16 @@ button:hover {
   background: #e7f0ed  
 }
 
+#comments{
+  width: 100%;
+}
+
+li{
+  display: flex;
+  justify-content: space-between;
+  align-content: baseline;
+}
+
 input[type=submit] {
   outline: none;
   border: 5px solid #e7f0ed;
@@ -73,4 +83,14 @@ input[type=submit]:hover {
   cursor: pointer;
   background: #f87f00;
   color: white;
+}
+
+.delete{
+  margin: 0;
+  padding: 5px 8px;
+  border: 0;
+  color: #e7f0ed;
+  text-align: center;
+  font-size: 0.7em; 
+  background: #435969;
 }

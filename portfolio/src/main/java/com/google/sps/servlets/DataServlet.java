@@ -40,18 +40,20 @@ public class DataServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String comment = request.getParameter( "user-comment");
-    
+
     //store the comment in the database 
-    Entity commentEntity = new Entity("Comment");
-    commentEntity.setProperty("text", comment);
-    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-    datastore.put(commentEntity);
-    
+    if(!comment.isEmpty()){
+      Entity commentEntity = new Entity("Comment");
+      commentEntity.setProperty("text", comment);
+      DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+      datastore.put(commentEntity);
+    }
+
     response.sendRedirect("/");
   }
 
   /** 
-    * doGet gets the list of comments from the database and sends the list of comments form the client 
+    * doGet gets the list of comments and comments id from the database and sends it as a list of pair (id,comment) to the client 
    **/
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -60,11 +62,16 @@ public class DataServlet extends HttpServlet {
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     PreparedQuery results = datastore.prepare(query);
 
-    ArrayList<String> comments = new ArrayList<>();
+    ArrayList<Entity> comments = new ArrayList<>();
     for (Entity entity : results.asIterable()) {
-      if (comments.size() == numOfComment) {break;}
-      String comment = (String) entity.getProperty("text");
-      comments.add(comment);
+      if (comments.size() == numOfComment) break;
+      long id = entity.getKey().getId();
+      String text = (String) entity.getProperty("text");
+      Entity commentEntity= new Entity("Comment");
+
+      commentEntity.setProperty("id", id);
+      commentEntity.setProperty("text", text);
+      comments.add(commentEntity);
     }
     String json = toJsonG(comments);
     response.setContentType("application/json;");
