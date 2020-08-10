@@ -31,12 +31,13 @@ public final class FindMeetingQuery {
    */
   public Collection<TimeRange> query(Collection<Event> events, MeetingRequest request) {
 
-    Collection<String> attendees = request.getAttendees();
-    Collection<String> optionalAttendees = request.getOptionalAttendees();
+    ArrayList<String> attendees =  new ArrayList<String>(request.getAttendees());
+    ArrayList<String> allAttendees =  new ArrayList<String>(request.getOptionalAttendees());
+    allAttendees.addAll(attendees);
     long meetingDuration = request.getDuration();
     ArrayList<TimeRange> meetingTimes = new ArrayList<TimeRange>();
 
-    if (attendees.isEmpty() && optionalAttendees.isEmpty()){
+    if (allAttendees.isEmpty()){
         meetingTimes.add(TimeRange.WHOLE_DAY);
         return meetingTimes;
     }
@@ -46,39 +47,9 @@ public final class FindMeetingQuery {
     }
 
     ArrayList<TimeRange> optionalMeetingTimes = new ArrayList<TimeRange>();
-    int optionalStart = TimeRange.START_OF_DAY;
-    int start = TimeRange.START_OF_DAY;
 
-    for(Event event : events){
-        Collection<String> eventAttendees = event.getAttendees();
-        int eventStart = event.getWhen().start();
-        int eventEnd = event.getWhen().end();
-        TimeRange freeTime = createTime(meetingDuration, event, start, false);
-        TimeRange optionalFreeTime = createTime(meetingDuration, event, optionalStart, false);
-
-        //NOTE Java Collections does not hav a method for intersection hence the use of disjoint + a negation condition.
-        if(!(Collections.disjoint(attendees, eventAttendees))){
-          if (freeTime != null) meetingTimes.add(freeTime);
-          if(start < eventEnd) start = eventEnd;
-          if (optionalFreeTime != null) optionalMeetingTimes.add(optionalFreeTime);
-          if(optionalStart < eventEnd) optionalStart =  eventEnd;
-        }
-
-       //NOTE Java Collections does not hav a method for intersection hence the use of disjoint + a negation condition.
-        if(!(Collections.disjoint(optionalAttendees, eventAttendees))){
-            if (optionalFreeTime != null) optionalMeetingTimes.add(optionalFreeTime);
-            if(optionalStart < eventEnd) optionalStart =  eventEnd; 
-        } 
-    }
-
-    //add time between last event and  end of the day.
-    if (start + meetingDuration <= TimeRange.END_OF_DAY){
-         meetingTimes.add(TimeRange.fromStartEnd(start, TimeRange.END_OF_DAY, true));
-    }
-    
-    if (optionalStart + meetingDuration <= TimeRange.END_OF_DAY){
-         optionalMeetingTimes.add(TimeRange.fromStartEnd(optionalStart, TimeRange.END_OF_DAY, true));
-    }
+    meetingTimes = findFreeTimes(events, attendees, meetingDuration);
+    optionalMeetingTimes = findFreeTimes(events, allAttendees, meetingDuration);
     
     //check wether to retutn meetingTimes or optionalMeetingTimes
     if(optionalMeetingTimes.isEmpty()){
@@ -86,6 +57,29 @@ public final class FindMeetingQuery {
     } else {
     return optionalMeetingTimes;
     }
+ }
+
+ public ArrayList<TimeRange> findFreeTimes(Collection<Event> events, ArrayList<String> attendees, long meetingDuration){
+    int start = TimeRange.START_OF_DAY;
+    ArrayList<TimeRange> meetingTimes = new ArrayList<TimeRange>();
+
+    for(Event event : events){
+        Collection<String> eventAttendees = event.getAttendees();
+        int eventStart = event.getWhen().start();
+        int eventEnd = event.getWhen().end();
+        TimeRange freeTime = createTime(meetingDuration, event, start, false);
+
+        //NOTE Java Collections does not have a method for intersection hence the use of disjoint + a negation condition.
+        if(!(Collections.disjoint(attendees, eventAttendees))){
+          if (freeTime != null) meetingTimes.add(freeTime);
+          if(start < eventEnd) start = eventEnd;
+        } 
+    }
+    
+    if (start + meetingDuration <= TimeRange.END_OF_DAY){
+         meetingTimes.add(TimeRange.fromStartEnd(start, TimeRange.END_OF_DAY, true));
+    }
+    return meetingTimes;
  }
 
  public TimeRange createTime (long meetingDuration, Event event, int start, boolean includeEnd){
