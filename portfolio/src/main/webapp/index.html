@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -8,7 +9,7 @@
     <script src="script.js"></script>
     <link rel="stylesheet" href="style.css">
   </head>
-  <body onload="createMap(); drawChart()">
+  <body onload="createMap(); loadChart()">
     <div id="content">
      <div id= "header">
       <img src="images/beatricey.png" alt="Beatrice" style="width:170px;height:170px;">  
@@ -17,11 +18,10 @@
         Currently, I am a 2nd year undergrad reading <b>Computer Science and Philosophy at Oxford University</b> (so if you have any deep philosophical questions fire away! ).<br> 
         In my spare time I enjoy <b>horse riding, hiking, playing board games and baking</b> (chocolate cake anyone?). This is my first work experience and I'm so excited to be working for Google!</p>
       <div id="buttonline">
-        <button onclick="show('about')">ABOUT ME</button>
-        <button onclick="show('mapContainer')">WHEN IN ROME</button>
-        <button onclick="show('social')">LET'S BE FRIENDS</button>
-        <button onclick="show('form')">COMMENTS</button>
-        <button onclick="show('chart')">PIZZA CHART</button>
+        <button onclick="showAbout()">about me</button>
+        <button onclick="showMap()">when in Rome</button>
+        <button onclick="showSocial()">let's be friends</button>
+        <button onclick="getComments()">comments</button>
       </div>
      </div>  
         <div id="about" class="para" style="display:none;"> 

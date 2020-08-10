@@ -64,10 +64,11 @@ public class DataServlet extends HttpServlet {
 
     ArrayList<Entity> comments = new ArrayList<>();
     for (Entity entity : results.asIterable()) {
-      if (comments.size() == numOfComment) {break;}
+      if (comments.size() == numOfComment) break;
       long id = entity.getKey().getId();
       String text = (String) entity.getProperty("text");
       Entity commentEntity= new Entity("Comment");
+
       commentEntity.setProperty("id", id);
       commentEntity.setProperty("text", text);
       comments.add(commentEntity);
