@@ -21,7 +21,7 @@ function hide() {
   x.forEach(i => i.style.display = "none");
 }
 
-// showAbout shoieSkill showSocial getComment: functions to show paragraph content when the relevant button is clicked 
+// showAbout showSkill showSocial getComment: functions to show paragraph content when the relevant button is clicked 
 function showAbout() {
   var aboutElement = document.getElementById("about");
   if (aboutElement.style.display === "none") {
