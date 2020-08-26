@@ -24,9 +24,11 @@ function hide() {
   x.forEach(i => i.style.display = "none");
 }
 
-// show(x) function to show paragraph content when the relevant button is clicked 
-function show(sectionID) {
-  var element = document.getElementById(sectionID);
+
+// show(x) renders paragraph content matching the sectionID passed by parameter. 
+function show(x) {
+  var element = document.getElementById(x);
+
   if (element.style.display === "none") {
 
     hide();

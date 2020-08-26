@@ -60,10 +60,11 @@ public class ChartChoiceServlet extends HttpServlet {
    **/
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    Entity commentEntity = new Entity("Vote");
-    commentEntity.setProperty("voteValue", request.getParameter("vote"));
+    String  vote = request.getParameter("vote");
+    Entity voteEntity = new Entity("Vote");
+    voteEntity.setProperty("voteValue", vote);
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-    datastore.put(commentEntity);
+    datastore.put(voteEntity);
 
     response.sendRedirect("/");
   }
