@@ -290,7 +290,6 @@ public final class FindMeetingQueryTest {
         new Event("Event 3", TimeRange.fromStartDuration(TIME_0900AM, DURATION_30_MINUTES),
             Arrays.asList(PERSON_B)));
        
-
     MeetingRequest request =
         new MeetingRequest(Arrays.asList(PERSON_A, PERSON_B), DURATION_30_MINUTES);
     request.addOptionalAttendee(PERSON_C);
@@ -363,7 +362,6 @@ public final class FindMeetingQueryTest {
     Assert.assertEquals(expected, actual);
   }
 
-    
   @Test
   public void noMandatoryAttendees() {
     // ++ ADDITIONAL TEST 4 ++ 
@@ -416,4 +414,3 @@ public final class FindMeetingQueryTest {
     Assert.assertEquals(expected, actual);
   }
 }
-

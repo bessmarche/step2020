@@ -33,23 +33,23 @@ import java.util.*;
 /** Servlet to delete the comments data from the database. */
 @WebServlet("/delete-data")
 public class DeleteServlet extends HttpServlet {
+    
   /** 
     * doPost iterate trough all comment entities and deletes them from the database 
    **/
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    String idComment = request.getParameter("idComment");
+    String commentID = request.getParameter("idComment");
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     Query query = new Query("Comment");
 
-    if(idComment.isEmpty()){
-         //iterate trough the entities in the database and delete them
+    if(commentID.isEmpty()){
         for (Entity entity : datastore.prepare(query).asIterable()) {
             datastore.delete(entity.getKey());
         }
     } else {
         //parse id to long and delete entity with corresponding id
-        long id = Long.parseLong(idComment);
+        long id = Long.parseLong(commentID);
         Key commentKey = KeyFactory.createKey("Comment", id);
         datastore.delete(commentKey);
     }
