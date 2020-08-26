@@ -49,7 +49,7 @@ public class DataServlet extends HttpServlet {
       datastore.put(commentEntity);
     }
 
-    response.sendRedirect("/");
+    response.sendRedirect("/#form");
   }
 
   /** 

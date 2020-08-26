@@ -1,32 +1,43 @@
-body{
-  background:  #435969;
+body {
+  background: #303034;
 }
 
-#content {
+#main {
+  margin: auto;
+  max-width: 1000px;
+  font-family: 'Raleway', sans-serif;
+  line-height: 1.6;
+  color: #303034;
+  align-items: center;
+  justify-content: center;
+  min-width: 800px;
+}
+
+#header {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #435969;
   flex-direction: column;
-  font-family: Arial, Helvetica, sans-serif;  
-}
-
-#header { 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center; 
-  padding: 50px; 
+  padding: 50px;
   margin: 50px 50px 20px 50px;
-  background: #e7f0ed  
+  background:#f6f4f5;
 }
 
-p{
-font-size: 1.0em;
+p {
+  font-size: 1em;
+  text-align: justify;
+
 }
 
-#buttonline{
+hr{
+    background: #feca00;
+    height: 10px;
+    border: 0px;
+    width: 25%;
+}
+
+.buttonline {
+  text-align: center;
   flex-direction: row;
 }
 
@@ -35,17 +46,17 @@ button {
   text-transform: uppercase;
   border: 5px solid #e7f0ed;
   padding: 10px 10px;
-  margin: 10px;
+  margin: 5px;
   font-size: 1.5em;
-  color: #435969;
+  color:#303034;
   font-weight: bold;
   background: #feca00;
   transition: all 0.2s ease-in-out;
 }
 button:hover {
   cursor: pointer;
-  background: #f87f00;
-  color: white;
+  background: #d28517;
+  color:#f6f4f5;
 }
 
 .para {
@@ -53,51 +64,105 @@ button:hover {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  text-align: center; 
-  padding: 50px; 
+  text-align: center;
+  padding: 50px;
   margin-top: 0;
   margin: 0px 50px 50px 50px;
-  background: #e7f0ed  
+  background:#f6f4f5;
+}
+
+#about {
+  align-items: baseline;
 }
 
 #map {
-  border: 10px solid  #feca00;
+  border: 10px solid #feca00;
   height: 600px;
-  width: 600px;
+  width: 600;
 }
 
-#comments{
+#chartContainer {
+  border: 10px solid #feca00;
+}
+
+#comments {
   width: 100%;
 }
 
-li{
+.comment {
   display: flex;
   justify-content: space-between;
   align-content: baseline;
+  border: 5px solid #303034;
+  padding: 20px;
+  margin: 10px;
 }
 
-input[type=submit] {
+input[type='submit'] {
   outline: none;
-  border: 5px solid #e7f0ed;
+  border: 5px solid #f6f4f5;
   padding: 10px 10px;
   font-size: 1.5em;
-  color: #435969;
+  color: #303034;
   font-weight: bold;
   background: #feca00;
   transition: all 0.2s ease-in-out;
 }
-input[type=submit]:hover {
+input[type='submit']:hover {
   cursor: pointer;
-  background: #f87f00;
+  background: #d28517;
+  color: #f6f4f5;
+}
+
+.delete {
+    margin: 0;
+    padding: 5px 8px;
+    border: 0;
+    color: #f6f4f5;
+    text-align: center;
+    font-size: 0.7em;
+    background: #303034;
+}
+
+#delete {
+  background-color: transparent;
+  font-size: medium;
+}
+#delete:hover{
+  color: #d28517;
+}
+
+#numCom {
+    flex-direction: row;
+}
+
+.fa {
+  font: normal normal normal 30px/1 FontAwesome;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  width: 30px;
+  margin: 5px 2px;
+  border-radius: 50%;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+
+.fa-linkedin {
+  background: #007bb5;
   color: white;
 }
 
-.delete{
-  margin: 0;
-  padding: 5px 8px;
-  border: 0;
-  color: #e7f0ed;
-  text-align: center;
-  font-size: 0.7em; 
-  background: #435969;
+.fa-instagram {
+  background: #125688;
+  color: white;
+}
+
+
+.fa-github {
+  background:#2c4762;
+  color: white;
 }

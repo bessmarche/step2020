@@ -66,6 +66,6 @@ public class ChartChoiceServlet extends HttpServlet {
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     datastore.put(voteEntity);
 
-    response.sendRedirect("/");
+    response.sendRedirect("/#chart");
   }
 }

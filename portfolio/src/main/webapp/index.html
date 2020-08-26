@@ -2,100 +2,162 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <title>Beatrice</title>
+    <meta charset="UTF-8" />
+    <title>Personal Portfolio | Beatrice</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,500;1,300;1,500&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/icon.png" type="image/jpg">
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFHL1VTHTuhrDcATKcgLjCnj82I0qzYVo"></script>
     <script src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="script.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css" />
   </head>
-  <body onload="createMap(); loadChart()">
-    <div id="content">
-     <div id= "header">
-      <img src="images/beatricey.png" alt="Beatrice" style="width:170px;height:170px;">  
-      <h1>Hello world!</h1>
-      <p>It's-a-me, Beatrice!<br>I am a  <b>STEP Intern</b> in the Plx ZRH team. I was born and raised in <b>Italy</b> and I’ve been living in the UK for the past 5 years.<br>
-        Currently, I am a 2nd year undergrad reading <b>Computer Science and Philosophy at Oxford University</b> (so if you have any deep philosophical questions fire away! ).<br> 
-        In my spare time I enjoy <b>horse riding, hiking, playing board games and baking</b> (chocolate cake anyone?). This is my first work experience and I'm so excited to be working for Google!</p>
-      <div id="buttonline">
-        <button onclick="showAbout()">about me</button>
-        <button onclick="showMap()">when in Rome</button>
-        <button onclick="showSocial()">let's be friends</button>
-        <button onclick="getComments()">comments</button>
+  <body onload="showAnchor(); createMap(); drawChart()">
+    <div id="main">
+      <div id="header">
+        <img
+          src="images/beatricey.png"
+          alt="Beatrice"
+          style="width: 200px; height: 200px;"
+        />
+        <h1>Hello World</h1>
+        <hr>
+        <h2><i>It's-a-me, Beatrice!</i></h2>
+        <div class="buttonline">
+          <a href="#about"><button onclick="show('about')">ABOUT ME</button></a>
+          <a href="#social"><button onclick="show('social')">LET'S BE FRIENDS</button></a>
+          <a href="#form"><button onclick="show('form')">COMMENTS</button></a>
+          <a href="#mapContainer"><button onclick="show('mapContainer')">WHEN IN ROME</button></a>
+          <a href="#chart"><button onclick="show('chart')">PIZZA CHART</button></a>
+        </div>
       </div>
-     </div>  
-        <div id="about" class="para" style="display:none;"> 
-            <h1>About me</h1>
-            Born and raised in Italy.<br>
-            Have been  living in the UK for 5 years.<br>
-            Studying CS and Philosophy at the University of Oxford.<br>
-            When not coding you can find me horse riding.<br>
-            <h1>My CS background</h1>
-            I’ve started studying CS at university.<br>
-            The topics I’ve covered include Functional Programming, Object Oriented Programming, Algs and Data Structures, Logic and Models of Computations
-            The languages I have used include Scala, Haskell (love it), and Python.<br>
-            I haven’t done any major projects but I like doing Hackatons and coding with my friends.<br>
-            <h1><i>"It's not a bug, it's a feature!"</i></h1>
-            Here is a random assortment of things I can do. Are they a bug? Are they a feature? It's up to you to decide :) <br>
-            <br>
-            I like coding (obviously), I am familiar with the following languages: Python, Haskell, Scala, JS, html and CSS<br>
-            I also like studying philosophy. My favourite field is Philosophy of Logic and Language<br>
-            I've been riding horses since I was a child, currently I am the Novice Captain of my university team<br>
-            More coming soon!        
+      <div id="about" class="para" style="display: none;">
+        <h1>About me</h1>
+        <hr style="margin-left:0;">
+        <p>
+          I am a <b>STEP Intern</b> in the Plx ZRH
+          team. I was born and raised in <b>Italy</b> and I’ve been living in
+          the UK for the past 5 years.<br />
+          Currently, I am a 2nd year undergrad reading
+          <b>Computer Science and Philosophy at Oxford University</b> (so if you
+          have any deep philosophical questions fire away!).<br />
+          In my spare time I enjoy
+          <b>horse riding, hiking, playing board games and baking</b> (chocolate
+          cake anyone?). This is my first work experience and I'm so excited to
+          be working for Google!
+        </p>
+        <h1>My CS background</h1>
+        <hr style="margin-left:0;">
+        <p>
+        I am a Computer Science student at Oxford University.<br />
+        The topics I’ve covered in my degree include <b>Functional Programming, Object Oriented
+        Programming, Algorithm and Data Structures, Logic and Models of Computations</b><br />
+        I like taking parts in Hackatons and coding challenges with my friends. I have partecipated in <b>OxfordHack 2019</b> and <b>AI Impact Weekend 2020</b> where my team was shortlisted as finalist<br />
+        </p>
+        <h1><i>"It's not a bug, it's a feature!"</i></h1>
+        <hr style="margin-left:0;"> 
+        <p>
+        Here is a random assortment of things I can do. Are they a bug? Are they
+        a feature? It's up to you to decide <br />
+        I like coding (obviously), I am familiar with the following languages: <b>Python, Haskell, Scala, JS, html and CSS</b><br />
+        I also like studying philosophy. My favourite field is <b>Philosophy of
+        Logic and Language</b><br />
+        I've been riding horses since I was a child, currently I am <b>the Novice
+        Captain of my university team</b><br />
+        More coming soon!
+        </p>
+      </div>
+      <div id="mapContainer" class="para" style="display: none;">
+        <div>
+          <h1> When in Rome </h1>
+          <hr>
+          <p>
+           As part of my internship I need to learn about libraries that provide access to various
+features of <b>Google Cloud.</b> 
+           On this page I've explored different features of <b>Google Maps library</b>, which lets you add an
+interactive Google Map to a webpage.
+          </p>
+          <h2><i>"Oh Rome! My country! City of the soul!" - Lord Byron</i></h2>
+          <hr>
+          <p>
+          You've probably heard of some of Rome most famous landmarks, like the
+          Collosseum or St. Peter Basilica on this map you'll find some "hidden
+          gems" of the Eternal City.<br />
+          These are some of my favourite places to grab a snack, I hope next
+          time you'll visit Rome you'll stop by and check them out.
+          </p>
         </div>
-        <div id="mapContainer" class="para" style="display:none;"> 
-            <div>
-                <h2><i>"Oh Rome! My country! City of the soul!" - Lord Byron</i></h2>
-                You've probably heard of some of Rome most famous landmarks, like the Collosseum or St. Peter Basilica on this map you'll find some "hidden gems" of the Eternal City.<br>
-                These are some of my favourite places to grab a snack, I hope next time you'll visit Rome you'll stop by and check them out.  
-            </div>
-            <br>
-            <br>
-            <div id="map"></div>
+        <br />
+        <br />
+        <div id="map"></div>
+      </div>
+      <div id="social" class="para" style="display: none;">
+       <h1>Let's be friend</h1>
+       <hr>
+        <h2>Want to keep in touch? Follow me on:</h2>
+        <br />
+        <div class="buttonline">
+         <a href="https://github.com/bessmarche" class="fa fa-github"></a>
+         <a href="https://www.instagram.com/beatricemarchegiani" class="fa fa-instagram"></a>
+         <a href="https://www.linkedin.com/in/beatrice-marchegiani-a24206117" class="fa fa-linkedin"></a>
         </div>
-        <div id="social" class="para" style="display:none;">Want to keep in touch? Follow me on:<br>
-            <a href="https://github.com/bessmarche" target="_blank">GitHub</a> <br>
-            <a href="https://www.instagram.com/beatricemarchegiani" target="_blank">Instagram</a> <br>
-            <a href="https://www.linkedin.com/in/beatrice-marchegiani-a24206117" target="_blank">Linkedin</a> <br>
+      </div>
+      <div id="form" class="para" style="display: none;">
+        <h1>Comments</h1>
+        <hr>
+        <ul id="comments"></ul>
+        <form action="/data" method="POST">
+          <h1>Leave a comment here:</h1>
+          <textarea name="user-comment"></textarea>
+          <br /><br />
+          <input type="submit" value="SUBMIT" />
+        </form>
+        <br />
+        <div id=numCom>
+        <label for="numberChoice">How many comments do you want to see?</label>
+        <select
+          name="numberChoice"
+          id="numberOfComments"
+          onchange="fetchData()"
+        >
+          <option value="0">None</option>
+          <option value="5" selected="selected">5</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="-1">Show All</option>
+        </select>
         </div>
-        <div id="form" class="para">
-            <ul id="comments"> </ul>
-            <form action="/data" method="POST">
-                 <h1>Leave a comment here:</h1>
-                 <input type="text" name="user-comment">
-                 <br/><br/>
-                 <input type="submit"/>
-            </form>
-            <button onclick="fetchDeleteData()">Delete All Comments</button>
-            <br>
-            <label for="numberChoice">How many comments do you want to see?</label>
-                 <select name="numberChoice" id="numberOfComments" onchange="fetchData()">
-                     <option value="0">None</option>
-                     <option value="5" selected="selected">5</option>
-                     <option value="10">10</option>
-                     <option value="20">20</option>
-                     <option value="-1">Show All</option>
-                 </select> 
-        </div>
-        <div id="chart" class="para" style="display:none;">
-            <div id="chartContainer"></div>  
-            <h2>Vote</h2>
-            <form action="/chart-data" method="POST">
-                <select name="vote">
-                      <option value="Mozzarella">Mozzarella</option>
-                      <option value="Onion">Onion</option>
-                      <option value="Anchovies">Anchovies</option>
-                      <option value="Chilly">Chilly</option>
-                       <option value="Pineapple :(">Pineapple :(</option>
-                      <option value="Mushroom">Mushroom</option>
-                </select>
-           <br>
-           <button>Submit Your Choice</button>
-           </form>
-        </div>
+        <button id="delete" onclick="fetchDeleteData()">Delete All Comments</button>
+      </div>
+      <div id="chart" class="para" style="display: none;">
+        <h1> Pizza Chart </h1>
+        <hr>
+        <p>
+        As part of my internship I need to learn about <b>libraries</b> that provide access to various
+features of <b>Google Cloud.</b> 
+        On this page I've explored different features of <b>Google Charts library</b>, which lets you add an
+interactive chart to a webpage. 
+        <br>
+        I've taken this opportunity to settle once and for all the age-old question <b> "what is the best pizza topping?"  </b>
+        </p>
+        <div id="chartContainer"></div>
+        <h2>Vote</h2>
+        <form action="/chart-data" method="POST">
+          <select name="vote">
+            <option value="Mozzarella">Mozzarella</option>
+            <option value="Onion">Onion</option>
+            <option value="Anchovies">Anchovies</option>
+            <option value="Chilly">Chilly</option>
+            <option value="Pineapple :(">Pineapple :(</option>
+            <option value="Mushroom">Mushroom</option>
+          </select>
+          <br />
+          <button>Submit Your Choice</button>
+        </form>
+      </div>
     </div>
     <script type="text/javascript">
-             fetchData();
+      fetchData();
     </script>
   </body>
 </html>

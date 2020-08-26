@@ -53,7 +53,7 @@ public class DeleteServlet extends HttpServlet {
         Key commentKey = KeyFactory.createKey("Comment", id);
         datastore.delete(commentKey);
     }
-    response.sendRedirect("/");
+    response.sendRedirect("/#form");
   }
 
 }
